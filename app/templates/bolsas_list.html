@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}
+Observatório FAPEPI
+{% endblock title %}
+
+{% block content %}
+
+<div align="center" id="mapa">
+    <object width="800" height="400" type="text/html" data="http://127.0.0.1:8000/bolsa/mapa">
+
+    </object>
+</div>
+
+{% endblock content %}
