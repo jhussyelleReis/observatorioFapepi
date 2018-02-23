@@ -15,7 +15,7 @@ def mapa(request, template_name="mapa.html"):
 
     municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
 
-    qs = Bolsa.objecs.all()
+    qs = Bolsa.objects.all()
 
     municipiosBanco = pd.DataFrame.from_records(qs.values('pais', 'estado', 'instituicao', 'modalidade', 'programa', 'vigencia', 'descricao', 'pesquisador'))
 
