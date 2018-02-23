@@ -8,6 +8,8 @@ import pandas as pd
 
 def listar_bolsas(request, template_name="bolsas_list.html"):
 
+    #testeDeCommit
+
     return render(request, template_name)
 
 
