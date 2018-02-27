@@ -3,8 +3,8 @@ from .models import *
 
 class BolsaAdmin(admin.ModelAdmin):
     model = Bolsa
-    list_display = ('pesquisador','programa','pais')
-    list_filter = ['pesquisador','programa','pais','vigencia']
+    list_display = ('pesquisador','programa','estado')
+    list_filter = ['pesquisador','programa','estado','vigencia']
     search_fields = ['estado']
 
 class PesquisadorAdmin(admin.ModelAdmin):
@@ -37,7 +37,7 @@ class PublicacaoAdmin(admin.ModelAdmin):
 
 class EventoAdmin(admin.ModelAdmin):
     model = Evento
-    list_display = ('titulo', 'pesquisador', 'pais', 'estado')
+    list_display = ('titulo', 'pesquisador', 'tipo', 'estado')
     list_filter = ['titulo', 'pesquisador', 'estado']
     search_fields = ['titulo']
 
