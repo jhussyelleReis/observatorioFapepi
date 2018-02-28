@@ -35,10 +35,24 @@ class Programa(models.Model):
         ordering = ['nome']
 
 class Instituicao(models.Model):
+
+    ESTADO_CHOICES = (("RIO BRANCO - AC", "Acre"), ("MACEIO - AL", "Alagoas"), ("MACAPA -AP", "Amapá"), ("MANAUS - AM", "Amazonas"),
+    ("SALVADOR - BA", "Bahia"), ("FORTALEZA - CE", "Ceará"), ("BRASILIA - DF", "Distrito Federal"),
+    ("VITORIA - ES", "Espírito Santo"),
+    ("GOIANIA - GO", "Goiás"), ("SAO LUIS - MA", "Maranhão"), ("BELO HORIZONTE - MG", "Minas Gerais"),
+    ("CAMPO GRANDE - MS", "Mato Grosso do Sul"),
+    ("CUIABA - MT", "Mato Grosso"), ("BELEM - PA", "Pará"), ("JOAO PESSOA - PB", "Paraíba"),
+    ("RECIFE - PE", "Pernambuco"), ("TERESINA, PI", "Piauí"),
+    ("CURITIBA - PR", "Paraná"), ("RIO DE JANEIRO - RJ", "Rio de Janeiro"), ("NATAL - RN", "Rio Grande do Norte"),
+    ("PORTO VELHO - RO", "Rondônia"),
+    ("BOA VISTA - RR", "Roraima"), ("PORTO ALEGRE - RS", "Rio Grande do Sul"), ("FLORIANOPOLIS - SC", "Santa Catarina"),
+    ("ARACAJU - SE", "Sergipe"),
+    ("SAO PAULO - SP", "São Paulo"), ("PALMAS - TO", "Tocantins"))
+
+    pais = models.CharField(max_length=50, null=False, verbose_name="País", default="Brasil")
+    estado = models.CharField(max_length=50, null=False, verbose_name="Estado", choices=ESTADO_CHOICES)
     nome = models.CharField(null=False, max_length=50, verbose_name="Nome")
     endereco = models.CharField(null=False, max_length=50, verbose_name="Endereço")
-
-    # so?
 
     def __str__(self):
         return self.nome
@@ -150,6 +164,23 @@ class Bolsa(models.Model):
         verbose_name = "Bolsa"
 
 class Projeto(models.Model):
+
+    ESTADO_CHOICES = (("RIO BRANCO - AC", "Acre"), ("MACEIO - AL", "Alagoas"), ("MACAPA -AP", "Amapá"), ("MANAUS - AM", "Amazonas"),
+    ("SALVADOR - BA", "Bahia"), ("FORTALEZA - CE", "Ceará"), ("BRASILIA - DF", "Distrito Federal"),
+    ("VITORIA - ES", "Espírito Santo"),
+    ("GOIANIA - GO", "Goiás"), ("SAO LUIS - MA", "Maranhão"), ("BELO HORIZONTE - MG", "Minas Gerais"),
+    ("CAMPO GRANDE - MS", "Mato Grosso do Sul"),
+    ("CUIABA - MT", "Mato Grosso"), ("BELEM - PA", "Pará"), ("JOAO PESSOA - PB", "Paraíba"),
+    ("RECIFE - PE", "Pernambuco"), ("TERESINA, PI", "Piauí"),
+    ("CURITIBA - PR", "Paraná"), ("RIO DE JANEIRO - RJ", "Rio de Janeiro"), ("NATAL - RN", "Rio Grande do Norte"),
+    ("PORTO VELHO - RO", "Rondônia"),
+    ("BOA VISTA - RR", "Roraima"), ("PORTO ALEGRE - RS", "Rio Grande do Sul"), ("FLORIANOPOLIS - SC", "Santa Catarina"),
+    ("ARACAJU - SE", "Sergipe"),
+    ("SAO PAULO - SP", "São Paulo"), ("PALMAS - TO", "Tocantins"))
+
+    pais = models.CharField(max_length=50, null=False, verbose_name="País", default="Brasil")
+    estado = models.CharField(max_length=50, null=False, verbose_name="Estado", choices=ESTADO_CHOICES)
+    instituicao = models.ForeignKey(Instituicao, verbose_name="Instituição")
     titulo = models.CharField(max_length=200, null=False, verbose_name="Título")
     resumo = models.CharField(max_length=500, null=False, verbose_name="Resumo")
     vigencia = models.DateField(null=False, verbose_name="Vigência")
@@ -168,10 +199,12 @@ class Projeto(models.Model):
 class Publicacao(models.Model):
     MODALIDADE_CHOICES = (("artigo", "Artigo Científico"), ("livro", "Livro Impresso"), ("ebook", "E-book"))
 
+
     titulo = models.CharField(max_length=200, null=False, verbose_name="Título")
     modalidade = models.CharField(max_length=100, null=False, choices=MODALIDADE_CHOICES, verbose_name="Modalidade")
     area = models.CharField(max_length=200, null=False, verbose_name="Area do Conhecimento")
     pesquisador = models.ForeignKey(Pesquisador, verbose_name="Pesquisador")
+    #instituicao = models.ForeignKey(Instituicao, verbose_name="Instituição")
 
     def __str__(self):
         return self.titulo
