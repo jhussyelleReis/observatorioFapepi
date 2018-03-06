@@ -77,14 +77,9 @@ def listar_participacao_eventos(request, categoria, template_name="eventos_parti
 
     bolsas = Bolsa.objects.all()
 
-    eventosBanco = Evento.objects.all()
+    eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
 
-    eventosTratamento = pd.DataFrame.from_records(
-        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
-
-    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
-
-    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+    eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
                                            'eventosParticipacao': eventosParticipacao})
@@ -103,9 +98,9 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
 
     mapa = folium.Map(location=[-15.788497, -47.879873], zoom_start=4)
 
-    lat = dados['LATITUDE'][:500].values
+    lat = dados['LATITUDE'][:1000].values
 
-    long = dados['LONGITUDE'][:500].values
+    long = dados['LONGITUDE'][:1000].values
 
     for la, lo in zip(lat, long):
         folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
@@ -120,17 +115,12 @@ def listar_organizacao_eventos(request, categoria, template_name="eventos_organi
 
     bolsas = Bolsa.objects.all()
 
-    eventosBanco = Evento.objects.all()
+    eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
 
-    eventosTratamento = pd.DataFrame.from_records(
-        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
-
-    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
-
-    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+    eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
-                                           'eventosParticipacao': eventosParticipacao})
+                                           'eventosParticipacao': eventosParticipacao })
 
 def observatorio_default(request, template_name="observatorio_default.html"):
 

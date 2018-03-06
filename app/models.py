@@ -222,7 +222,7 @@ class Evento(models.Model):
         ("GOIANIA - GO", "Goiás"), ("SAO LUIS - MA", "Maranhão"), ("BELO HORIZONTE - MG", "Minas Gerais"),
         ("CAMPO GRANDE - MS", "Mato Grosso do Sul"),
         ("CUIABA - MT", "Mato Grosso"), ("BELEM - PA", "Pará"), ("JOAO PESSOA - PB", "Paraíba"),
-        ("RECIFE - PE", "Pernambuco"), ("TERESINA, PI", "Piauí"),
+        ("RECIFE - PE", "Pernambuco"), ("TERESINA - PI", "Piauí"),
         ("CURITIBA - PR", "Paraná"), ("RIO DE JANEIRO - RJ", "Rio de Janeiro"), ("NATAL - RN", "Rio Grande do Norte"),
         ("PORTO VELHO - RO", "Rondônia"),
         ("BOA VISTA - RR", "Roraima"), ("PORTO ALEGRE - RS", "Rio Grande do Sul"),

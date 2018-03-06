@@ -12,9 +12,26 @@ Observatório FAPEPI
 
 {% block totalEveOrg %} {{ eventosOrganizacao|length }}{% endblock totalEveOrg %}
 
+{% block contentEsquerda %}
+
+    {% for evento in eventosOrganizacao %}
+
+        <h5> Pesquisador: {{ evento.pesquisador.nome }} </h5>
+        <h6>
+            <p>Evento: {{ evento.titulo }} </p>
+            <p>Local: {{ evento.estado }} </p>
+            <p>Área: {{ evento.area }} </p>
+            <p>Data: {{ evento.data }} </p>
+        </h6>
+        <hr/>
+
+    {% endfor %}
+
+{% endblock contentEsquerda %}
+
 {% block contentDireita %}
 
-    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/bolsa/mapa/bolsas">
+    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/evento/mapa/eventos/organizacao/">
 
     </object>
 
