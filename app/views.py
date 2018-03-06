@@ -33,7 +33,18 @@ def listar_bolsas(request, categoria, template_name="bolsas_list.html"):
 
     mapa_bolsas(request, "mapa_bolsas.html")
 
-    return render(request, template_name)
+    bolsas = Bolsa.objects.all()
+
+    eventosBanco = Evento.objects.all()
+
+    eventosTratamento = pd.DataFrame.from_records(
+        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
+
+    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
+
+    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao, 'eventosParticipacao': eventosParticipacao})
 
 def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.html"):
 
@@ -64,7 +75,19 @@ def listar_participacao_eventos(request, categoria, template_name="eventos_parti
 
     mapa_participacao_eventos(request, "mapa_participacao_eventos.html")
 
-    return render(request, template_name)
+    bolsas = Bolsa.objects.all()
+
+    eventosBanco = Evento.objects.all()
+
+    eventosTratamento = pd.DataFrame.from_records(
+        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
+
+    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
+
+    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
+                                           'eventosParticipacao': eventosParticipacao})
 
 def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.html"):
     municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
@@ -95,9 +118,33 @@ def listar_organizacao_eventos(request, categoria, template_name="eventos_organi
 
     mapa_organizacao_eventos(request, "mapa_organizacao_eventos.html")
 
-    return render(request, template_name)
+    bolsas = Bolsa.objects.all()
+
+    eventosBanco = Evento.objects.all()
+
+    eventosTratamento = pd.DataFrame.from_records(
+        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
+
+    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
+
+    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
+                                           'eventosParticipacao': eventosParticipacao})
 
 def observatorio_default(request, template_name="observatorio_default.html"):
+
     mapa_bolsas(request, "mapa_bolsas.html")
 
-    return render(request, template_name)
+    bolsas = Bolsa.objects.all()
+
+    eventosBanco = Evento.objects.all()
+
+    eventosTratamento = pd.DataFrame.from_records(
+        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
+
+    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
+
+    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao, 'eventosParticipacao': eventosParticipacao})

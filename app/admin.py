@@ -38,7 +38,7 @@ class PublicacaoAdmin(admin.ModelAdmin):
 class EventoAdmin(admin.ModelAdmin):
     model = Evento
     list_display = ('titulo', 'pesquisador', 'tipo', 'estado')
-    list_filter = ['titulo', 'pesquisador', 'estado']
+    list_filter = ['titulo', 'pesquisador', 'tipo','estado']
     search_fields = ['titulo']
 
 admin.site.register(Bolsa, BolsaAdmin)

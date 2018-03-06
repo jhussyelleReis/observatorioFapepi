@@ -22,10 +22,10 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav nav-pills nav-justified">
-                    <li><a href="{% url 'listar_bolsas' categoria='bolsas' %}">Bolsas</a></li>
+                    <li><a href="{% url 'listar_bolsas' categoria='bolsas' %}">Bolsas <span class="linkTotal">{% block totalBolsas %}{% endblock %}</span></a></li>
                     <li><a href="">Projetos de Pesquisa</a></li>
-                    <li><a href="{% url 'listar_participacao_eventos' categoria='eventos' %}">Participação em Eventos</a></li>
-                    <li><a href="{% url 'listar_organizacao_eventos' categoria='eventos' %}">Organização de Eventos</a></li>
+                    <li><a href="{% url 'listar_participacao_eventos' categoria='eventos' %}">Participação em Eventos <span class="linkTotal">{% block totalEvePar %}{% endblock %}</span></a></li>
+                    <li><a href="{% url 'listar_organizacao_eventos' categoria='eventos' %}">Organização de Eventos <span class="linkTotal">{% block totalEveOrg %}{% endblock %}</span></a></li>
                     <li><a href="">Publicações Científicas</a></li>
                 </ul>
             </div>

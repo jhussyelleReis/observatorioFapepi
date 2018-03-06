@@ -6,6 +6,13 @@
 Observatório FAPEPI
 {% endblock title %}
 
+{% block totalBolsas %} {{ bolsas|length }} {% endblock totalBolsas %}
+
+{% block totalEvePar %} {{ eventosParticipacao|length }}{% endblock totalEvePar %}
+
+{% block totalEveOrg %} {{ eventosOrganizacao|length }}{% endblock totalEveOrg %}
+
+
 {% block contentDireita %}
 
     <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/bolsa/mapa/bolsas">
