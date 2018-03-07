@@ -23,7 +23,7 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
     long = dados['LONGITUDE'][:500].values
 
     for la, lo in zip(lat, long):
-        folium.Marker(location=[la, lo], popup='Localização da Bolsa').add_to(mapa)
+        folium.Marker(location=[la, lo], popup='Total de Bolsas: ').add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_bolsas.html"))
 
@@ -35,16 +35,14 @@ def listar_bolsas(request, categoria, template_name="bolsas_list.html"):
 
     bolsas = Bolsa.objects.all()
 
-    eventosBanco = Evento.objects.all()
+    eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
 
-    eventosTratamento = pd.DataFrame.from_records(
-        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
+    eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
-    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
+    projetos = Projeto.objects.all()
 
-    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
-
-    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao, 'eventosParticipacao': eventosParticipacao})
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao, 'eventosParticipacao': eventosParticipacao,
+                                           'projetos':projetos})
 
 def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.html"):
 
@@ -81,8 +79,10 @@ def listar_participacao_eventos(request, categoria, template_name="eventos_parti
 
     eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
+    projetos = Projeto.objects.all()
+
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
-                                           'eventosParticipacao': eventosParticipacao})
+                                           'eventosParticipacao': eventosParticipacao, 'projetos': projetos})
 
 def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.html"):
     municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
@@ -119,8 +119,50 @@ def listar_organizacao_eventos(request, categoria, template_name="eventos_organi
 
     eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
+    projetos = Projeto.objects.all()
+
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
-                                           'eventosParticipacao': eventosParticipacao })
+                                           'eventosParticipacao': eventosParticipacao, 'projetos':projetos })
+
+def mapa_projetos(request, template_name="mapa_projetos.html"):
+    municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
+
+    qs = Projeto.objects.all()
+
+    municipiosBanco = pd.DataFrame.from_records(
+        qs.values('pais', 'estado', 'instituicao', 'titulo', 'resumo', 'vigencia', 'valor','programa', 'pesquisador'))
+
+    dados = municipios.merge(municipiosBanco, left_on='Mun/UF', right_on='estado', how='inner')
+
+    print(municipiosBanco)
+
+    mapa = folium.Map(location=[-15.788497, -47.879873], zoom_start=4)
+
+    lat = dados['LATITUDE'][:500].values
+
+    long = dados['LONGITUDE'][:500].values
+
+    for la, lo in zip(lat, long):
+        folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
+
+    mapa.save(os.path.join('app/templates', "mapa_projetos.html"))
+
+    return render(request, template_name)
+
+def listar_projetos(request, categoria, template_name="projetos_list.html"):
+
+    mapa_projetos(request, "mapa_projetos.html")
+
+    bolsas = Bolsa.objects.all()
+
+    eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
+
+    eventosParticipacao = Evento.objects.filter(tipo='participacao')
+
+    projetos = Projeto.objects.all()
+
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
+                                           'eventosParticipacao': eventosParticipacao, 'projetos': projetos})
 
 def observatorio_default(request, template_name="observatorio_default.html"):
 
@@ -137,4 +179,7 @@ def observatorio_default(request, template_name="observatorio_default.html"):
 
     eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
 
-    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao, 'eventosParticipacao': eventosParticipacao})
+    projetos = Projeto.objects.all()
+
+    return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao, 'eventosParticipacao': eventosParticipacao,
+                                           'projetos': projetos})

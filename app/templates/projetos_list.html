@@ -16,14 +16,17 @@ Observatório FAPEPI
 
 {% block contentEsquerda %}
 
-    {% for evento in eventosParticipacao %}
+    {% for projeto in projetos %}
 
-        <h5> Pesquisador: {{ evento.pesquisador.nome }} </h5>
+        <h5> Pesquisador: {{ projeto.pesquisador.nome }} </h5>
         <h6>
-            <p>Evento: {{ evento.titulo }} </p>
-            <p>Local: {{ evento.estado }} </p>
-            <p>Área: {{ evento.area }} </p>
-            <p>Data: {{ evento.data }} </p>
+            <p>Nome: {{ projeto.titulo }} </p>
+            <p>Resumo: {{ projeto.resumo }} </p>
+            <p>Instituição: {{ projeto.instituicao.nome }} </p>
+            <p>Localização: {{ projeto.estado }} </p>
+            <p>Programa: {{ projeto.programa.nome }} </p>
+            <p>Valor: {{ projeto.valor }} </p>
+            <p>Vigencia: {{ projeto.vigencia }} </p>
         </h6>
         <hr/>
 
@@ -33,7 +36,7 @@ Observatório FAPEPI
 
 {% block contentDireita %}
 
-    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/evento/mapa/eventos/participacao/">
+    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/projeto/mapa/projetos/">
 
     </object>
 

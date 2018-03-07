@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^evento/mapa/eventos/participacao/$', views.mapa_participacao_eventos, name='mapa_participacao_eventos'),
     url(r'^evento/organizacao/listar/(?P<categoria>[\w\-]+)/$', views.listar_organizacao_eventos, name='listar_organizacao_eventos'),
     url(r'^evento/mapa/eventos/organizacao/$', views.mapa_organizacao_eventos, name='mapa_organizacao_eventos'),
+    url(r'^projeto/listar/(?P<categoria>[\w\-]+)/$', views.listar_projetos, name='listar_projetos'),
+    url(r'^projeto/mapa/projetos/$', views.mapa_projetos, name='mapa_projetos'),
 
 ]
 
