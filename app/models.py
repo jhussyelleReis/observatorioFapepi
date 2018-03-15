@@ -204,7 +204,7 @@ class Publicacao(models.Model):
     modalidade = models.CharField(max_length=100, null=False, choices=MODALIDADE_CHOICES, verbose_name="Modalidade")
     area = models.CharField(max_length=200, null=False, verbose_name="Area do Conhecimento")
     pesquisador = models.ForeignKey(Pesquisador, verbose_name="Pesquisador")
-    #instituicao = models.ForeignKey(Instituicao, verbose_name="Instituição")
+    instituicao = models.ForeignKey(Instituicao, verbose_name="Instituição")
 
     def __str__(self):
         return self.titulo

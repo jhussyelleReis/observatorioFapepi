@@ -26,7 +26,7 @@
                     <li><a href="{% url 'listar_projetos' categoria='projetos' %}">Projetos de Pesquisa <span class="linkTotal">{% block totalProjetos %}{% endblock %}</span></a></li>
                     <li><a href="{% url 'listar_participacao_eventos' categoria='eventos' %}">Participação em Eventos <span class="linkTotal">{% block totalEvePar %}{% endblock %}</span></a></li>
                     <li><a href="{% url 'listar_organizacao_eventos' categoria='eventos' %}">Organização de Eventos <span class="linkTotal">{% block totalEveOrg %}{% endblock %}</span></a></li>
-                    <li><a href="">Publicações Científicas</a></li>
+                    <li><a href="{% url 'listar_publicacoes' categoria='publicacao' %}">Publicações Científicas<span class="linkTotal">{% block totalPubli %}{% endblock %}</span></a></li>
                 </ul>
             </div>
         </div>

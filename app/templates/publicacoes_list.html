@@ -18,17 +18,14 @@ Observatório FAPEPI
 
 {% block contentEsquerda %}
 
-    {% for projeto in projetos %}
+    {% for publicacao in publicacoes %}
 
-        <h5> Pesquisador: {{ projeto.pesquisador.nome }} </h5>
+        <h5> Pesquisador: {{ publicacao.pesquisador.nome }} </h5>
         <h6>
-            <p>Nome: {{ projeto.titulo }} </p>
-            <p>Resumo: {{ projeto.resumo }} </p>
-            <p>Instituição: {{ projeto.instituicao.nome }} </p>
-            <p>Localização: {{ projeto.estado }} </p>
-            <p>Programa: {{ projeto.programa.nome }} </p>
-            <p>Valor: {{ projeto.valor }} </p>
-            <p>Vigencia: {{ projeto.vigencia }} </p>
+            <p>Título: {{ publicacao.titulo }} </p>
+            <p>Modalidade: {{ publicacao.modalidade }} </p>
+            <p>Área: {{ publicacao.area }} </p>
+            <p>Instituição: {{ publicacao.instituicao.nome }} </p>
         </h6>
         <hr/>
 
@@ -36,9 +33,10 @@ Observatório FAPEPI
 
 {% endblock contentEsquerda %}
 
+
 {% block contentDireita %}
 
-    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/projeto/mapa/projetos/">
+    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/publicacao/mapa/publicacoes/">
 
     </object>
 
