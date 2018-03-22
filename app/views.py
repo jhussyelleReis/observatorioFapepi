@@ -69,8 +69,14 @@ def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.
 
     long = dados['LONGITUDE'][:500].values
 
-    for la, lo in zip(lat, long):
-        folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
+    estados = dados['estado'][:500].values
+
+    for la, lo, es in zip(lat, long, estados):
+        if ((dados[dados.LATITUDE == la]) is not None):
+            totalDeEventos = pd.value_counts(dados['LATITUDE'])
+        folium.Marker(location=[la, lo],
+                      popup=(folium.Popup(es + '</br> Total de Eventos: ' + str(totalDeEventos[la]) + " ."))).add_to(mapa)
+        #folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_participacao_eventos.html"))
 
@@ -112,8 +118,14 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
 
     long = dados['LONGITUDE'][:1000].values
 
-    for la, lo in zip(lat, long):
-        folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
+    estados = dados['estado'][:1000].values
+
+    for la, lo, es in zip(lat, long, estados):
+        if ((dados[dados.LATITUDE == la]) is not None):
+            totalDeEventos = pd.value_counts(dados['LATITUDE'])
+        folium.Marker(location=[la, lo],
+                      popup=(folium.Popup(es + '</br> Total de Eventos: ' + str(totalDeEventos[la]) + " ."))).add_to(mapa)
+        #folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_organizacao_eventos.html"))
 
@@ -153,8 +165,15 @@ def mapa_projetos(request, template_name="mapa_projetos.html"):
 
     long = dados['LONGITUDE'][:500].values
 
-    for la, lo in zip(lat, long):
-        folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
+    estados = dados['estado'][:1000].values
+
+    for la, lo, es in zip(lat, long, estados):
+        if ((dados[dados.LATITUDE == la]) is not None):
+            totalDeProjetos = pd.value_counts(dados['LATITUDE'])
+        folium.Marker(location=[la, lo],
+                      popup=(folium.Popup(es + '</br> Total de Eventos: ' + str(totalDeProjetos[la]) + " ."))).add_to(
+            mapa)
+        #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_projetos.html"))
 
@@ -201,8 +220,15 @@ def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
 
     long = dados['LONGITUDE'][:500].values
 
-    for la, lo in zip(lat, long):
-        folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
+    estados = dados['estado'][:1000].values
+
+    for la, lo, es in zip(lat, long, estados):
+        if ((dados[dados.LATITUDE == la]) is not None):
+            totalDePublicacoes = pd.value_counts(dados['LATITUDE'])
+        folium.Marker(location=[la, lo],
+                      popup=(folium.Popup(es + '</br> Total de Publicações: ' + str(totalDePublicacoes[la]) + " ."))).add_to(
+            mapa)
+        #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_publicacoes.html"))
 
