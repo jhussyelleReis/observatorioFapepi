@@ -22,8 +22,12 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
 
     long = dados['LONGITUDE'][:500].values
 
-    for la, lo in zip(lat, long):
-        folium.Marker(location=[la, lo], popup='Total de Bolsas: ').add_to(mapa)
+    porcaria = dados['estado'][:500].values
+
+    for la, lo, po in zip(lat, long, porcaria):
+        if((dados[dados.LATITUDE == la]) is not None ):
+            totalDeBolsas = pd.value_counts(dados['LATITUDE'])
+        folium.Marker(location=[la, lo], popup=(folium.Popup(po + '</br> Total de Bolsas: ' + str(totalDeBolsas[la]) + " ." ))).add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_bolsas.html"))
 
