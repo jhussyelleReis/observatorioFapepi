@@ -1,3 +1,6 @@
+
+
+
 from django.shortcuts import render
 from .models import *
 #from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -6,9 +9,15 @@ import folium
 import os
 import pandas as pd
 
+def listar_bolsas_restri(request, estado, template_name="bolsas_list_restri.html"):
+    print("Estado: "+estado)
+    bolsas = Bolsa.objects.filter(estado=estado)
+
+    return render(request, template_name, {'bolsas': bolsas})
+
 def mapa_bolsas(request, template_name="mapa_bolsas.html"):
 
-    municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
+    municipios = pd.read_excel('municipiosBrasil.xlsx', encoding='latin1')
 
     qs = Bolsa.objects.all()
 
@@ -24,10 +33,17 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
 
     estados = dados['estado'][:500].values
 
+    municipios = dados['Mun/UF'][:500].values
+
+    print(municipios)
+
+    print(estados)
+
     for la, lo, es in zip(lat, long, estados):
         if((dados[dados.LATITUDE == la]) is not None ):
             totalDeBolsas = pd.value_counts(dados['LATITUDE'])
-        folium.Marker(location=[la, lo], popup=(folium.Popup(es + '</br> Total de Bolsas: ' + str(totalDeBolsas[la]) + " ." ))).add_to(mapa)
+
+        folium.Marker(location=[la, lo], popup=(folium.Popup(es + '</br> Total de Bolsas: '+ str(totalDeBolsas[la]) + '</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_bolsas.html"))
 
@@ -171,7 +187,7 @@ def mapa_projetos(request, template_name="mapa_projetos.html"):
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeProjetos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Eventos: ' + str(totalDeProjetos[la]) + " ."))).add_to(
+                      popup=(folium.Popup(es + '</br> Total de Projetos: ' + str(totalDeProjetos[la]) + " ."))).add_to(
             mapa)
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
@@ -236,7 +252,7 @@ def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
 
 def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"):
 
-    mapa_projetos(request, "mapa_publicacoes.html")
+    mapa_publicoes(request, "mapa_publicacoes.html")
 
     bolsas = Bolsa.objects.all()
 

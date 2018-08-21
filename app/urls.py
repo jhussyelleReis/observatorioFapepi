@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.observatorio_default, name='observatorio_default'),
+    url(r'^bolsa/listarrestri/(?P<estado>[\w\-]+)/$', views.listar_bolsas_restri, name='listar_bolsas_restri'),
     url(r'^bolsa/listar/(?P<categoria>[\w\-]+)/$', views.listar_bolsas, name='listar_bolsas'),
     url(r'^bolsa/mapa/bolsas/$', views.mapa_bolsas, name='mapa_bolsas'),
     url(r'^evento/participacao/listar/(?P<categoria>[\w\-]+)/$', views.listar_participacao_eventos, name='listar_participacao_eventos'),
