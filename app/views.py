@@ -10,7 +10,6 @@ import os
 import pandas as pd
 
 def listar_bolsas_restri(request, estado, template_name="bolsas_list_restri.html"):
-    print("Estado: "+estado)
     bolsas = Bolsa.objects.filter(estado=estado)
 
     return render(request, template_name, {'bolsas': bolsas})
@@ -67,9 +66,14 @@ def listar_bolsas(request, categoria, template_name="bolsas_list.html"):
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos,
                                            'publicacoes': publicacoes})
 
+def listar_participacao_evento_restri(request, estado, template_name="eventos_participacao_list_restri.html"):
+    eventosParticipacao = Evento.objects.filter(tipo='participacao', estado=estado)
+
+    return render(request, template_name, {'eventosParticipacao': eventosParticipacao})
+
 def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.html"):
 
-    municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
+    municipios = pd.read_excel('municipiosBrasil.xlsx', encoding='latin1')
 
     qs = Evento.objects.all()
 
@@ -91,7 +95,7 @@ def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeEventos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Eventos: ' + str(totalDeEventos[la]) + " ."))).add_to(mapa)
+                      popup=(folium.Popup(es + '</br> Total de Eventos: '+ str(totalDeEventos[la]) + '</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
         #folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_participacao_eventos.html"))
@@ -116,8 +120,13 @@ def listar_participacao_eventos(request, categoria, template_name="eventos_parti
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos,
                                            'publicacoes': publicacoes})
 
+def listar_organizacao_evento_restri(request, estado, template_name="eventos_organizacao_list_restri.html"):
+    eventosOrganizacao = Evento.objects.filter(tipo='organizacao', estado=estado)
+
+    return render(request, template_name, {'eventosOrganizacao': eventosOrganizacao})
+
 def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.html"):
-    municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
+    municipios = pd.read_excel('municipiosBrasil.xlsx', encoding='latin1')
 
     qs = Evento.objects.all()
 
@@ -140,7 +149,7 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeEventos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Eventos: ' + str(totalDeEventos[la]) + " ."))).add_to(mapa)
+                      popup=(folium.Popup(es + '</br> Total de Eventos: '+ str(totalDeEventos[la]) + '</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
         #folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_organizacao_eventos.html"))
@@ -165,8 +174,13 @@ def listar_organizacao_eventos(request, categoria, template_name="eventos_organi
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos,
                                            'publicacoes': publicacoes})
 
+def listar_projetos_restri(request, estado, template_name="projetos_list_restri.html"):
+    projetos = Projeto.objects.filter(estado=estado)
+
+    return render(request, template_name, {'projetos': projetos})
+
 def mapa_projetos(request, template_name="mapa_projetos.html"):
-    municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
+    municipios = pd.read_excel('municipiosBrasil.xlsx', encoding='latin1')
 
     qs = Projeto.objects.all()
 
@@ -187,7 +201,7 @@ def mapa_projetos(request, template_name="mapa_projetos.html"):
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeProjetos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Projetos: ' + str(totalDeProjetos[la]) + " ."))).add_to(
+                      popup=(folium.Popup(es + '</br> Total de Projetos: '+ str(totalDeProjetos[la]) + '</br><a href="http://127.0.0.1:8000/projeto/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(
             mapa)
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
@@ -213,8 +227,14 @@ def listar_projetos(request, categoria, template_name="projetos_list.html"):
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos,
                                            'publicacoes': publicacoes})
 
+def listar_publicacoes_restri(request, estado, template_name="publicacoes_list_restri.html"):
+    instituicoes = Instituicao.objects.filter(estado=estado)
+    publicacoes = Publicacao.objects.filter(instituicao = instituicoes)
+
+    return render(request, template_name, {'publicacoes': publicacoes})
+
 def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
-    municipios = pd.read_excel('municipiosBrasil.xls', encoding='latin1')
+    municipios = pd.read_excel('municipiosBrasil.xlsx', encoding='latin1')
 
     publicacoes = Publicacao.objects.all()
 
@@ -242,7 +262,7 @@ def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDePublicacoes = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Publicações: ' + str(totalDePublicacoes[la]) + " ."))).add_to(
+                      popup=(folium.Popup(es + '</br> Total de Publicações: '+ str(totalDePublicacoes[la]) + '</br><a href="http://127.0.0.1:8000/publicacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(
             mapa)
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 

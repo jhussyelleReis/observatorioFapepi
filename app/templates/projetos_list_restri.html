@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="title">
+        Observatório FAPEPI
+    </title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block favicon %}<link href="{% static 'media/images/favicon.png' %}" rel="shortcut icon" />{% endblock %}
+</head>
+<body>
+    <header class="cover"></header>
+    <nav class="navbar navbar-default nav-justified">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Lista de Pesquisadores do Estado Selecionado: </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        {% for projeto in projetos %}
+
+        <h5> Pesquisador: {{ projeto.pesquisador.nome }} </h5>
+        <h6>
+            <p>Nome: {{ projeto.titulo }} </p>
+            <p>Resumo: {{ projeto.resumo }} </p>
+            <p>Instituição: {{ projeto.instituicao.nome }} </p>
+            <p>Localização: {{ projeto.estado }} </p>
+            <p>Programa: {{ projeto.programa.nome }} </p>
+            <p>Valor: {{ projeto.valor }} </p>
+            <p>Vigencia: {{ projeto.vigencia }} </p>
+        </h6>
+        <hr/>
+
+        {% endfor %}
+    </div>
+</body>

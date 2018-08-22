@@ -36,18 +36,19 @@ class Programa(models.Model):
 
 class Instituicao(models.Model):
 
-    ESTADO_CHOICES = (("RIO BRANCO - AC", "Acre"), ("MACEIO - AL", "Alagoas"), ("MACAPA - AP", "Amapá"), ("MANAUS - AM", "Amazonas"),
-    ("SALVADOR - BA", "Bahia"), ("FORTALEZA - CE", "Ceará"), ("BRASILIA - DF", "Distrito Federal"),
-    ("VITORIA - ES", "Espírito Santo"),
-    ("GOIANIA - GO", "Goiás"), ("SAO LUIS - MA", "Maranhão"), ("BELO HORIZONTE - MG", "Minas Gerais"),
-    ("CAMPO GRANDE - MS", "Mato Grosso do Sul"),
-    ("CUIABA - MT", "Mato Grosso"), ("BELEM - PA", "Pará"), ("JOAO PESSOA - PB", "Paraíba"),
-    ("RECIFE - PE", "Pernambuco"), ("TERESINA - PI", "Piauí"),
-    ("CURITIBA - PR", "Paraná"), ("RIO DE JANEIRO - RJ", "Rio de Janeiro"), ("NATAL - RN", "Rio Grande do Norte"),
-    ("PORTO VELHO - RO", "Rondônia"),
-    ("BOA VISTA - RR", "Roraima"), ("PORTO ALEGRE - RS", "Rio Grande do Sul"), ("FLORIANOPOLIS - SC", "Santa Catarina"),
-    ("ARACAJU - SE", "Sergipe"),
-    ("SAO PAULO - SP", "São Paulo"), ("PALMAS - TO", "Tocantins"))
+    ESTADO_CHOICES = (
+    ("RIOBRANCO-AC", "Acre"), ("MACEIO-AL", "Alagoas"), ("MACAPA-AP", "Amapá"), ("MANAUS-AM", "Amazonas"),
+    ("SALVADOR-BA", "Bahia"), ("FORTALEZA-CE", "Ceará"), ("BRASILIA-DF", "Distrito Federal"),
+    ("VITORIA-ES", "Espírito Santo"),
+    ("GOIANIA-GO", "Goiás"), ("SAOLUIS-MA", "Maranhão"), ("BELOHORIZONTE-MG", "Minas Gerais"),
+    ("CAMPOGRANDE-MS", "Mato Grosso do Sul"),
+    ("CUIABA-MT", "Mato Grosso"), ("BELEM-PA", "Pará"), ("JOAOPESSOA-PB", "Paraíba"),
+    ("RECIFE-PE", "Pernambuco"), ("TERESINA-PI", "Piauí"),
+    ("CURITIBA-PR", "Paraná"), ("RIODEJANEIRO-RJ", "Rio de Janeiro"), ("NATAL-RN", "Rio Grande do Norte"),
+    ("PORTOVELHO-RO", "Rondônia"),
+    ("BOAVISTA-RR", "Roraima"), ("PORTOALEGRE-RS", "Rio Grande do Sul"), ("FLORIANOPOLIS-SC", "Santa Catarina"),
+    ("ARACAJU-SE", "Sergipe"),
+    ("SAOPAULO-SP", "São Paulo"), ("PALMAS-TO", "Tocantins"))
 
     pais = models.CharField(max_length=50, null=False, verbose_name="País", default="Brasil")
     estado = models.CharField(max_length=50, null=False, verbose_name="Estado", choices=ESTADO_CHOICES)
@@ -165,18 +166,19 @@ class Bolsa(models.Model):
 
 class Projeto(models.Model):
 
-    ESTADO_CHOICES = (("RIO BRANCO - AC", "Acre"), ("MACEIO - AL", "Alagoas"), ("MACAPA - AP", "Amapá"), ("MANAUS - AM", "Amazonas"),
-    ("SALVADOR - BA", "Bahia"), ("FORTALEZA - CE", "Ceará"), ("BRASILIA - DF", "Distrito Federal"),
-    ("VITORIA - ES", "Espírito Santo"),
-    ("GOIANIA - GO", "Goiás"), ("SAO LUIS - MA", "Maranhão"), ("BELO HORIZONTE - MG", "Minas Gerais"),
-    ("CAMPO GRANDE - MS", "Mato Grosso do Sul"),
-    ("CUIABA - MT", "Mato Grosso"), ("BELEM - PA", "Pará"), ("JOAO PESSOA - PB", "Paraíba"),
-    ("RECIFE - PE", "Pernambuco"), ("TERESINA - PI", "Piauí"),
-    ("CURITIBA - PR", "Paraná"), ("RIO DE JANEIRO - RJ", "Rio de Janeiro"), ("NATAL - RN", "Rio Grande do Norte"),
-    ("PORTO VELHO - RO", "Rondônia"),
-    ("BOA VISTA - RR", "Roraima"), ("PORTO ALEGRE - RS", "Rio Grande do Sul"), ("FLORIANOPOLIS - SC", "Santa Catarina"),
-    ("ARACAJU - SE", "Sergipe"),
-    ("SAO PAULO - SP", "São Paulo"), ("PALMAS - TO", "Tocantins"))
+    ESTADO_CHOICES = (
+    ("RIOBRANCO-AC", "Acre"), ("MACEIO-AL", "Alagoas"), ("MACAPA-AP", "Amapá"), ("MANAUS-AM", "Amazonas"),
+    ("SALVADOR-BA", "Bahia"), ("FORTALEZA-CE", "Ceará"), ("BRASILIA-DF", "Distrito Federal"),
+    ("VITORIA-ES", "Espírito Santo"),
+    ("GOIANIA-GO", "Goiás"), ("SAOLUIS-MA", "Maranhão"), ("BELOHORIZONTE-MG", "Minas Gerais"),
+    ("CAMPOGRANDE-MS", "Mato Grosso do Sul"),
+    ("CUIABA-MT", "Mato Grosso"), ("BELEM-PA", "Pará"), ("JOAOPESSOA-PB", "Paraíba"),
+    ("RECIFE-PE", "Pernambuco"), ("TERESINA-PI", "Piauí"),
+    ("CURITIBA-PR", "Paraná"), ("RIODEJANEIRO-RJ", "Rio de Janeiro"), ("NATAL-RN", "Rio Grande do Norte"),
+    ("PORTOVELHO-RO", "Rondônia"),
+    ("BOAVISTA-RR", "Roraima"), ("PORTOALEGRE-RS", "Rio Grande do Sul"), ("FLORIANOPOLIS-SC", "Santa Catarina"),
+    ("ARACAJU-SE", "Sergipe"),
+    ("SAOPAULO-SP", "São Paulo"), ("PALMAS-TO", "Tocantins"))
 
     pais = models.CharField(max_length=50, null=False, verbose_name="País", default="Brasil")
     estado = models.CharField(max_length=50, null=False, verbose_name="Estado", choices=ESTADO_CHOICES)
@@ -216,19 +218,19 @@ class Publicacao(models.Model):
 
 class Evento(models.Model):
 
-    ESTADO_CHOICES = (("RIO BRANCO - AC", "Acre"), ("MACEIO - AL", "Alagoas"), ("MACAPA - AP", "Amapá"), ("MANAUS - AM", "Amazonas"),
-        ("SALVADOR - BA", "Bahia"), ("FORTALEZA - CE", "Ceará"), ("BRASILIA - DF", "Distrito Federal"),
-        ("VITORIA - ES", "Espírito Santo"),
-        ("GOIANIA - GO", "Goiás"), ("SAO LUIS - MA", "Maranhão"), ("BELO HORIZONTE - MG", "Minas Gerais"),
-        ("CAMPO GRANDE - MS", "Mato Grosso do Sul"),
-        ("CUIABA - MT", "Mato Grosso"), ("BELEM - PA", "Pará"), ("JOAO PESSOA - PB", "Paraíba"),
-        ("RECIFE - PE", "Pernambuco"), ("TERESINA - PI", "Piauí"),
-        ("CURITIBA - PR", "Paraná"), ("RIO DE JANEIRO - RJ", "Rio de Janeiro"), ("NATAL - RN", "Rio Grande do Norte"),
-        ("PORTO VELHO - RO", "Rondônia"),
-        ("BOA VISTA - RR", "Roraima"), ("PORTO ALEGRE - RS", "Rio Grande do Sul"),
-        ("FLORIANOPOLIS - SC", "Santa Catarina"),
-        ("ARACAJU - SE", "Sergipe"),
-        ("SAO PAULO - SP", "São Paulo"), ("PALMAS - TO", "Tocantins"))
+    ESTADO_CHOICES = (
+    ("RIOBRANCO-AC", "Acre"), ("MACEIO-AL", "Alagoas"), ("MACAPA-AP", "Amapá"), ("MANAUS-AM", "Amazonas"),
+    ("SALVADOR-BA", "Bahia"), ("FORTALEZA-CE", "Ceará"), ("BRASILIA-DF", "Distrito Federal"),
+    ("VITORIA-ES", "Espírito Santo"),
+    ("GOIANIA-GO", "Goiás"), ("SAOLUIS-MA", "Maranhão"), ("BELOHORIZONTE-MG", "Minas Gerais"),
+    ("CAMPOGRANDE-MS", "Mato Grosso do Sul"),
+    ("CUIABA-MT", "Mato Grosso"), ("BELEM-PA", "Pará"), ("JOAOPESSOA-PB", "Paraíba"),
+    ("RECIFE-PE", "Pernambuco"), ("TERESINA-PI", "Piauí"),
+    ("CURITIBA-PR", "Paraná"), ("RIODEJANEIRO-RJ", "Rio de Janeiro"), ("NATAL-RN", "Rio Grande do Norte"),
+    ("PORTOVELHO-RO", "Rondônia"),
+    ("BOAVISTA-RR", "Roraima"), ("PORTOALEGRE-RS", "Rio Grande do Sul"), ("FLORIANOPOLIS-SC", "Santa Catarina"),
+    ("ARACAJU-SE", "Sergipe"),
+    ("SAOPAULO-SP", "São Paulo"), ("PALMAS-TO", "Tocantins"))
 
     TIPO_CHOICES = (("participacao", "Participação de Eventos"), ("organizacao", "Organização de Eventos"))
 

@@ -1,0 +1,37 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="title">
+        Observatório FAPEPI
+    </title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block favicon %}<link href="{% static 'media/images/favicon.png' %}" rel="shortcut icon" />{% endblock %}
+</head>
+<body>
+    <header class="cover"></header>
+    <nav class="navbar navbar-default nav-justified">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Lista de Pesquisadores do Estado Selecionado: </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        {% for publicacao in publicacoes %}
+
+        <h5> Pesquisador: {{ publicacao.pesquisador.nome }} </h5>
+        <h6>
+            <p>Título: {{ publicacao.titulo }} </p>
+            <p>Modalidade: {{ publicacao.modalidade }} </p>
+            <p>Área: {{ publicacao.area }} </p>
+            <p>Instituição: {{ publicacao.instituicao.nome }} </p>
+        </h6>
+        <hr/>
+
+        {% endfor %}
+    </div>
+</body>
