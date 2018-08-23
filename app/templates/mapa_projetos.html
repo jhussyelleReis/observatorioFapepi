@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     
-            <style> #map_74cfe5970e20484a8a2fea37753a7d3e {
-                position : relative;
-                width : 100.0%;
-                height: 100.0%;
-                left: 0.0%;
-                top: 0.0%;
-                }
-            </style>
-        
+    <style>#map_b4e994d7881c4e089d9bfffb86d421f8 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
 </head>
 <body>    
     
-            <div class="folium-map" id="map_74cfe5970e20484a8a2fea37753a7d3e" ></div>
-        
+    <div class="folium-map" id="map_b4e994d7881c4e089d9bfffb86d421f8" ></div>
 </body>
 <script>    
     
+    
+        var bounds = null;
+    
 
-            
-                var bounds = null;
-            
+    var map_b4e994d7881c4e089d9bfffb86d421f8 = L.map(
+        'map_b4e994d7881c4e089d9bfffb86d421f8', {
+        center: [-15.788497, -47.879873],
+        zoom: 4,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
 
-            var map_74cfe5970e20484a8a2fea37753a7d3e = L.map(
-                                  'map_74cfe5970e20484a8a2fea37753a7d3e',
-                                  {center: [-15.788497,-47.879873],
-                                  zoom: 4,
-                                  maxBounds: bounds,
-                                  layers: [],
-                                  worldCopyJump: false,
-                                  crs: L.CRS.EPSG3857
-                                 });
-            
+    
+    
+    var tile_layer_14d481ea0d1f47eda1c62f8cabbc9d6b = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_b4e994d7881c4e089d9bfffb86d421f8);
+    
+        var marker_38e8d1ce4fff44ac8e5d2dd2ab0204f3 = L.marker(
+            [-3.1, -60.02],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_b4e994d7881c4e089d9bfffb86d421f8);
         
     
-            var tile_layer_8cfd135426674e1c81fa75a327d77530 = L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-  "attribution": null,
-  "detectRetina": false,
-  "maxZoom": 18,
-  "minZoom": 1,
-  "noWrap": false,
-  "subdomains": "abc"
-}
-                ).addTo(map_74cfe5970e20484a8a2fea37753a7d3e);
-        
-    
-
-            var marker_90b1817020194717ac58a4c5223417e4 = L.marker(
-                [-3.1,-60.02],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_74cfe5970e20484a8a2fea37753a7d3e);
+            var popup_fff2d2895b794af4aba2e3e4bc07aa94 = L.popup({maxWidth: '300'
             
-    
-            var popup_7799f76dbb6e4bb99b6f9fa0a8678df7 = L.popup({maxWidth: '300'});
+            });
 
             
-                var html_892b5880fa754af2ac6b2bbf46c577b5 = $('<div id="html_892b5880fa754af2ac6b2bbf46c577b5" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Projetos: 1</br><a href="http://127.0.0.1:8000/projeto/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_7799f76dbb6e4bb99b6f9fa0a8678df7.setContent(html_892b5880fa754af2ac6b2bbf46c577b5);
+                var html_936edf758a1d408cb57917a06f05aece = $('<div id="html_936edf758a1d408cb57917a06f05aece" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Projetos: 1</br><a href="http://127.0.0.1:8000/projeto/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_fff2d2895b794af4aba2e3e4bc07aa94.setContent(html_936edf758a1d408cb57917a06f05aece);
             
 
-            marker_90b1817020194717ac58a4c5223417e4.bindPopup(popup_7799f76dbb6e4bb99b6f9fa0a8678df7);
+            marker_38e8d1ce4fff44ac8e5d2dd2ab0204f3.bindPopup(popup_fff2d2895b794af4aba2e3e4bc07aa94)
+            ;
 
             
         

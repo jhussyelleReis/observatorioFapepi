@@ -1,151 +1,152 @@
 <!DOCTYPE html>
 <head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     
-            <style> #map_ec4460f55c62447a80844afd9c1571e0 {
-                position : relative;
-                width : 100.0%;
-                height: 100.0%;
-                left: 0.0%;
-                top: 0.0%;
-                }
-            </style>
-        
+    <style>#map_0b62cac1a5f641e88ac65ec1ce7129dc {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
 </head>
 <body>    
     
-            <div class="folium-map" id="map_ec4460f55c62447a80844afd9c1571e0" ></div>
-        
+    <div class="folium-map" id="map_0b62cac1a5f641e88ac65ec1ce7129dc" ></div>
 </body>
 <script>    
     
+    
+        var bounds = null;
+    
 
-            
-                var bounds = null;
-            
+    var map_0b62cac1a5f641e88ac65ec1ce7129dc = L.map(
+        'map_0b62cac1a5f641e88ac65ec1ce7129dc', {
+        center: [-15.788497, -47.879873],
+        zoom: 4,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
 
-            var map_ec4460f55c62447a80844afd9c1571e0 = L.map(
-                                  'map_ec4460f55c62447a80844afd9c1571e0',
-                                  {center: [-15.788497,-47.879873],
-                                  zoom: 4,
-                                  maxBounds: bounds,
-                                  layers: [],
-                                  worldCopyJump: false,
-                                  crs: L.CRS.EPSG3857
-                                 });
-            
+    
+    
+    var tile_layer_24e0f24fb0844e6681a6078f8b662efb = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_0b62cac1a5f641e88ac65ec1ce7129dc);
+    
+        var marker_aa73ac2a14ab419bb9b6cf1065ca9f9b = L.marker(
+            [-9.97, -67.81],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_0b62cac1a5f641e88ac65ec1ce7129dc);
         
     
-            var tile_layer_12825a73ca1c4dbdac531c74810bbd18 = L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-  "attribution": null,
-  "detectRetina": false,
-  "maxZoom": 18,
-  "minZoom": 1,
-  "noWrap": false,
-  "subdomains": "abc"
-}
-                ).addTo(map_ec4460f55c62447a80844afd9c1571e0);
-        
-    
-
-            var marker_5c11d5c8127e4d25afbd95adb2ed0cbb = L.marker(
-                [-9.97,-67.81],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_ec4460f55c62447a80844afd9c1571e0);
+            var popup_48c3af1c4e734355827d9849e4237d9e = L.popup({maxWidth: '300'
             
-    
-            var popup_c76b870a08da4170898476d4daa6c493 = L.popup({maxWidth: '300'});
+            });
 
             
-                var html_bd6db2d4177e4506bd69ad1bed753c89 = $('<div id="html_bd6db2d4177e4506bd69ad1bed753c89" style="width: 100.0%; height: 100.0%;">RIOBRANCO-AC</br> Total de Eventos: 2</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/RIOBRANCO-AC" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_c76b870a08da4170898476d4daa6c493.setContent(html_bd6db2d4177e4506bd69ad1bed753c89);
+                var html_37bfbd05beef4b8f87782c36d1409700 = $('<div id="html_37bfbd05beef4b8f87782c36d1409700" style="width: 100.0%; height: 100.0%;">RIOBRANCO-AC</br> Total de Eventos: 2</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/RIOBRANCO-AC" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_48c3af1c4e734355827d9849e4237d9e.setContent(html_37bfbd05beef4b8f87782c36d1409700);
             
 
-            marker_5c11d5c8127e4d25afbd95adb2ed0cbb.bindPopup(popup_c76b870a08da4170898476d4daa6c493);
-
-            
-        
-    
-
-            var marker_418bc9be68e84d6fb125b08162405a19 = L.marker(
-                [-9.97,-67.81],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_ec4460f55c62447a80844afd9c1571e0);
-            
-    
-            var popup_af82bb90de954434b478078ff27a6316 = L.popup({maxWidth: '300'});
-
-            
-                var html_4b7619058f454c248a11cfae6bc1e7e5 = $('<div id="html_4b7619058f454c248a11cfae6bc1e7e5" style="width: 100.0%; height: 100.0%;">RIOBRANCO-AC</br> Total de Eventos: 2</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/RIOBRANCO-AC" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_af82bb90de954434b478078ff27a6316.setContent(html_4b7619058f454c248a11cfae6bc1e7e5);
-            
-
-            marker_418bc9be68e84d6fb125b08162405a19.bindPopup(popup_af82bb90de954434b478078ff27a6316);
+            marker_aa73ac2a14ab419bb9b6cf1065ca9f9b.bindPopup(popup_48c3af1c4e734355827d9849e4237d9e)
+            ;
 
             
         
     
-
-            var marker_7efc589fba4e43989f1d613a85f5b855 = L.marker(
-                [-9.66,-35.73],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_ec4460f55c62447a80844afd9c1571e0);
-            
+        var marker_e72ebd396b7d4e179c22d2bbfa10c1e2 = L.marker(
+            [-9.97, -67.81],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_0b62cac1a5f641e88ac65ec1ce7129dc);
+        
     
-            var popup_c2fa112bf7b04514a7ddc294b720a140 = L.popup({maxWidth: '300'});
+            var popup_9b94bf6d551c490082d9c6789b3c3422 = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_5b7570cd826441e89849e1a6c4ac7217 = $('<div id="html_5b7570cd826441e89849e1a6c4ac7217" style="width: 100.0%; height: 100.0%;">MACEIO-AL</br> Total de Eventos: 1</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/MACEIO-AL" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_c2fa112bf7b04514a7ddc294b720a140.setContent(html_5b7570cd826441e89849e1a6c4ac7217);
+                var html_53de44dd91864e27861815339d6b23e6 = $('<div id="html_53de44dd91864e27861815339d6b23e6" style="width: 100.0%; height: 100.0%;">RIOBRANCO-AC</br> Total de Eventos: 2</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/RIOBRANCO-AC" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_9b94bf6d551c490082d9c6789b3c3422.setContent(html_53de44dd91864e27861815339d6b23e6);
             
 
-            marker_7efc589fba4e43989f1d613a85f5b855.bindPopup(popup_c2fa112bf7b04514a7ddc294b720a140);
+            marker_e72ebd396b7d4e179c22d2bbfa10c1e2.bindPopup(popup_9b94bf6d551c490082d9c6789b3c3422)
+            ;
 
             
         
     
-
-            var marker_3f47d22ec1464b09a9e530b453f8b0fe = L.marker(
-                [0.03,-51.06],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_ec4460f55c62447a80844afd9c1571e0);
-            
+        var marker_b190c4c264a746c9b113e7ef31f6276a = L.marker(
+            [-9.66, -35.73],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_0b62cac1a5f641e88ac65ec1ce7129dc);
+        
     
-            var popup_17084518eaaf4d77a26042ec25577c79 = L.popup({maxWidth: '300'});
+            var popup_b814f52497004af5a181cd534d33fca9 = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_4f584e670f0d42af97a6f905987c090a = $('<div id="html_4f584e670f0d42af97a6f905987c090a" style="width: 100.0%; height: 100.0%;">MACAPA-AP</br> Total de Eventos: 1</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/MACAPA-AP" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_17084518eaaf4d77a26042ec25577c79.setContent(html_4f584e670f0d42af97a6f905987c090a);
+                var html_eee3b0da986949d49066ba088a4444bd = $('<div id="html_eee3b0da986949d49066ba088a4444bd" style="width: 100.0%; height: 100.0%;">MACEIO-AL</br> Total de Eventos: 1</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/MACEIO-AL" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_b814f52497004af5a181cd534d33fca9.setContent(html_eee3b0da986949d49066ba088a4444bd);
             
 
-            marker_3f47d22ec1464b09a9e530b453f8b0fe.bindPopup(popup_17084518eaaf4d77a26042ec25577c79);
+            marker_b190c4c264a746c9b113e7ef31f6276a.bindPopup(popup_b814f52497004af5a181cd534d33fca9)
+            ;
+
+            
+        
+    
+        var marker_b21a1747d74944299a23bbf72997f188 = L.marker(
+            [0.03, -51.06],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_0b62cac1a5f641e88ac65ec1ce7129dc);
+        
+    
+            var popup_aad636e545794004916772a5fe2e1515 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_a5fe3aa4912649f9b343f89673249dfb = $('<div id="html_a5fe3aa4912649f9b343f89673249dfb" style="width: 100.0%; height: 100.0%;">MACAPA-AP</br> Total de Eventos: 1</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/MACAPA-AP" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_aad636e545794004916772a5fe2e1515.setContent(html_a5fe3aa4912649f9b343f89673249dfb);
+            
+
+            marker_b21a1747d74944299a23bbf72997f188.bindPopup(popup_aad636e545794004916772a5fe2e1515)
+            ;
 
             
         

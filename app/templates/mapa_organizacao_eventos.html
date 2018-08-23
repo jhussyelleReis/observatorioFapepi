@@ -1,173 +1,175 @@
 <!DOCTYPE html>
 <head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     
-            <style> #map_28997b2dbb29412ea05593a24bcc5801 {
-                position : relative;
-                width : 100.0%;
-                height: 100.0%;
-                left: 0.0%;
-                top: 0.0%;
-                }
-            </style>
-        
+    <style>#map_f4870fa363854e8f9c636749b973b333 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
 </head>
 <body>    
     
-            <div class="folium-map" id="map_28997b2dbb29412ea05593a24bcc5801" ></div>
-        
+    <div class="folium-map" id="map_f4870fa363854e8f9c636749b973b333" ></div>
 </body>
 <script>    
     
+    
+        var bounds = null;
+    
 
-            
-                var bounds = null;
-            
+    var map_f4870fa363854e8f9c636749b973b333 = L.map(
+        'map_f4870fa363854e8f9c636749b973b333', {
+        center: [-15.788497, -47.879873],
+        zoom: 4,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
 
-            var map_28997b2dbb29412ea05593a24bcc5801 = L.map(
-                                  'map_28997b2dbb29412ea05593a24bcc5801',
-                                  {center: [-15.788497,-47.879873],
-                                  zoom: 4,
-                                  maxBounds: bounds,
-                                  layers: [],
-                                  worldCopyJump: false,
-                                  crs: L.CRS.EPSG3857
-                                 });
-            
+    
+    
+    var tile_layer_22d0336ebab5430bada4e704dc472ee4 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_f4870fa363854e8f9c636749b973b333);
+    
+        var marker_04ebec3b73984c8a850f6768048981f7 = L.marker(
+            [-5.08, -42.8],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_f4870fa363854e8f9c636749b973b333);
         
     
-            var tile_layer_22ec350468524203bc150a2ebc132596 = L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-  "attribution": null,
-  "detectRetina": false,
-  "maxZoom": 18,
-  "minZoom": 1,
-  "noWrap": false,
-  "subdomains": "abc"
-}
-                ).addTo(map_28997b2dbb29412ea05593a24bcc5801);
-        
-    
-
-            var marker_7341e9592077490691c18acf842ff85f = L.marker(
-                [-5.08,-42.8],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_28997b2dbb29412ea05593a24bcc5801);
+            var popup_3c6de22cec314721b68628e0ec8a7b5b = L.popup({maxWidth: '300'
             
-    
-            var popup_34027b5173b54a14bb0c782152724be0 = L.popup({maxWidth: '300'});
+            });
 
             
-                var html_6cb25e56a2404168a82ff0305ebbd16c = $('<div id="html_6cb25e56a2404168a82ff0305ebbd16c" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_34027b5173b54a14bb0c782152724be0.setContent(html_6cb25e56a2404168a82ff0305ebbd16c);
+                var html_dc07872fa8394b6398afcac55d87315f = $('<div id="html_dc07872fa8394b6398afcac55d87315f" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_3c6de22cec314721b68628e0ec8a7b5b.setContent(html_dc07872fa8394b6398afcac55d87315f);
             
 
-            marker_7341e9592077490691c18acf842ff85f.bindPopup(popup_34027b5173b54a14bb0c782152724be0);
-
-            
-        
-    
-
-            var marker_9fe7926c71f840e9bf7e6513fee66813 = L.marker(
-                [-5.08,-42.8],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_28997b2dbb29412ea05593a24bcc5801);
-            
-    
-            var popup_cdfa166257ee4542becc49de031c1471 = L.popup({maxWidth: '300'});
-
-            
-                var html_12176260599d4b9f91ce0ea03ddc3119 = $('<div id="html_12176260599d4b9f91ce0ea03ddc3119" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_cdfa166257ee4542becc49de031c1471.setContent(html_12176260599d4b9f91ce0ea03ddc3119);
-            
-
-            marker_9fe7926c71f840e9bf7e6513fee66813.bindPopup(popup_cdfa166257ee4542becc49de031c1471);
+            marker_04ebec3b73984c8a850f6768048981f7.bindPopup(popup_3c6de22cec314721b68628e0ec8a7b5b)
+            ;
 
             
         
     
-
-            var marker_e5739e4156e34e27aad0a608fffd5a33 = L.marker(
-                [-5.08,-42.8],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_28997b2dbb29412ea05593a24bcc5801);
-            
+        var marker_2bd29c97abef45f386633d29d439c1a8 = L.marker(
+            [-5.08, -42.8],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_f4870fa363854e8f9c636749b973b333);
+        
     
-            var popup_c8f9bcbd760c4e769cd3bfc816cfebb7 = L.popup({maxWidth: '300'});
+            var popup_5ae6948c42df4dfea7a7570a9f5567fa = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_6c1ea89537064c87bc3732049f611d75 = $('<div id="html_6c1ea89537064c87bc3732049f611d75" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_c8f9bcbd760c4e769cd3bfc816cfebb7.setContent(html_6c1ea89537064c87bc3732049f611d75);
+                var html_116fc844f23044bcb7f1c38f26c94827 = $('<div id="html_116fc844f23044bcb7f1c38f26c94827" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_5ae6948c42df4dfea7a7570a9f5567fa.setContent(html_116fc844f23044bcb7f1c38f26c94827);
             
 
-            marker_e5739e4156e34e27aad0a608fffd5a33.bindPopup(popup_c8f9bcbd760c4e769cd3bfc816cfebb7);
+            marker_2bd29c97abef45f386633d29d439c1a8.bindPopup(popup_5ae6948c42df4dfea7a7570a9f5567fa)
+            ;
 
             
         
     
-
-            var marker_33dcffb2fdd64b67a3dcb4ea03245306 = L.marker(
-                [-5.08,-42.8],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_28997b2dbb29412ea05593a24bcc5801);
-            
+        var marker_18b2c8df1f174e99926e0ed61462c6b2 = L.marker(
+            [-5.08, -42.8],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_f4870fa363854e8f9c636749b973b333);
+        
     
-            var popup_7f38eea431a540b48352feb4d08f5307 = L.popup({maxWidth: '300'});
+            var popup_846d04da1ad147e08621793ec3c6cb68 = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_e6832bd05db7407293388983a16f6b40 = $('<div id="html_e6832bd05db7407293388983a16f6b40" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_7f38eea431a540b48352feb4d08f5307.setContent(html_e6832bd05db7407293388983a16f6b40);
+                var html_f19b33b0bd164958b6c5057771e70a43 = $('<div id="html_f19b33b0bd164958b6c5057771e70a43" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_846d04da1ad147e08621793ec3c6cb68.setContent(html_f19b33b0bd164958b6c5057771e70a43);
             
 
-            marker_33dcffb2fdd64b67a3dcb4ea03245306.bindPopup(popup_7f38eea431a540b48352feb4d08f5307);
+            marker_18b2c8df1f174e99926e0ed61462c6b2.bindPopup(popup_846d04da1ad147e08621793ec3c6cb68)
+            ;
 
             
         
     
-
-            var marker_62ab5df93cfa4e15835f21346b9cdcb8 = L.marker(
-                [-5.08,-42.8],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_28997b2dbb29412ea05593a24bcc5801);
-            
+        var marker_b3444b4a862a49cd8955b9a4d434b94d = L.marker(
+            [-5.08, -42.8],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_f4870fa363854e8f9c636749b973b333);
+        
     
-            var popup_f5a3ec627e654e098d77b401d8290249 = L.popup({maxWidth: '300'});
+            var popup_8b10442c468a401fbf336ad4c556d5c0 = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_4e3b413069394825959184d4ea5ad191 = $('<div id="html_4e3b413069394825959184d4ea5ad191" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_f5a3ec627e654e098d77b401d8290249.setContent(html_4e3b413069394825959184d4ea5ad191);
+                var html_07af72fa70214958bbfdb4135394e463 = $('<div id="html_07af72fa70214958bbfdb4135394e463" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_8b10442c468a401fbf336ad4c556d5c0.setContent(html_07af72fa70214958bbfdb4135394e463);
             
 
-            marker_62ab5df93cfa4e15835f21346b9cdcb8.bindPopup(popup_f5a3ec627e654e098d77b401d8290249);
+            marker_b3444b4a862a49cd8955b9a4d434b94d.bindPopup(popup_8b10442c468a401fbf336ad4c556d5c0)
+            ;
+
+            
+        
+    
+        var marker_42555da0b6f2482292b54ea0b356ca20 = L.marker(
+            [-5.08, -42.8],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_f4870fa363854e8f9c636749b973b333);
+        
+    
+            var popup_19cd49ece9ef48db90ad10fc8e0c296b = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_486853f55bef406b901cb2777e3061b6 = $('<div id="html_486853f55bef406b901cb2777e3061b6" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Eventos: 5</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_19cd49ece9ef48db90ad10fc8e0c296b.setContent(html_486853f55bef406b901cb2777e3061b6);
+            
+
+            marker_42555da0b6f2482292b54ea0b356ca20.bindPopup(popup_19cd49ece9ef48db90ad10fc8e0c296b)
+            ;
 
             
         

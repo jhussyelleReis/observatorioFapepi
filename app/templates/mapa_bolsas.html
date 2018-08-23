@@ -1,151 +1,152 @@
 <!DOCTYPE html>
 <head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     
-            <style> #map_861e4a4a0a61493882b648e31fa8c446 {
-                position : relative;
-                width : 100.0%;
-                height: 100.0%;
-                left: 0.0%;
-                top: 0.0%;
-                }
-            </style>
-        
+    <style>#map_3a79912a251c46719ff58d21a982fe95 {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
 </head>
 <body>    
     
-            <div class="folium-map" id="map_861e4a4a0a61493882b648e31fa8c446" ></div>
-        
+    <div class="folium-map" id="map_3a79912a251c46719ff58d21a982fe95" ></div>
 </body>
 <script>    
     
+    
+        var bounds = null;
+    
 
-            
-                var bounds = null;
-            
+    var map_3a79912a251c46719ff58d21a982fe95 = L.map(
+        'map_3a79912a251c46719ff58d21a982fe95', {
+        center: [-15.788497, -47.879873],
+        zoom: 4,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
 
-            var map_861e4a4a0a61493882b648e31fa8c446 = L.map(
-                                  'map_861e4a4a0a61493882b648e31fa8c446',
-                                  {center: [-15.788497,-47.879873],
-                                  zoom: 4,
-                                  maxBounds: bounds,
-                                  layers: [],
-                                  worldCopyJump: false,
-                                  crs: L.CRS.EPSG3857
-                                 });
-            
+    
+    
+    var tile_layer_65d013b103ed480388e385dc941675f9 = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "subdomains": "abc"
+}).addTo(map_3a79912a251c46719ff58d21a982fe95);
+    
+        var marker_6a2e169c2f5649428d9414debc551aca = L.marker(
+            [-3.1, -60.02],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_3a79912a251c46719ff58d21a982fe95);
         
     
-            var tile_layer_a1da2afe1a52408fa6ec066cc6fb4f4f = L.tileLayer(
-                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                {
-  "attribution": null,
-  "detectRetina": false,
-  "maxZoom": 18,
-  "minZoom": 1,
-  "noWrap": false,
-  "subdomains": "abc"
-}
-                ).addTo(map_861e4a4a0a61493882b648e31fa8c446);
-        
-    
-
-            var marker_84914199c36f41b580fed55a6bb96a4a = L.marker(
-                [-3.1,-60.02],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_861e4a4a0a61493882b648e31fa8c446);
+            var popup_7e87b36be8f244a8af5427bc58cd231c = L.popup({maxWidth: '300'
             
-    
-            var popup_571cefede94443c9b0069128d91468b1 = L.popup({maxWidth: '300'});
+            });
 
             
-                var html_d3d6318e4ac24f1ca730ec12c6085932 = $('<div id="html_d3d6318e4ac24f1ca730ec12c6085932" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Bolsas: 3</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_571cefede94443c9b0069128d91468b1.setContent(html_d3d6318e4ac24f1ca730ec12c6085932);
+                var html_cc176d0769094db7a3f7e32311e99ce4 = $('<div id="html_cc176d0769094db7a3f7e32311e99ce4" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Bolsas: 3</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_7e87b36be8f244a8af5427bc58cd231c.setContent(html_cc176d0769094db7a3f7e32311e99ce4);
             
 
-            marker_84914199c36f41b580fed55a6bb96a4a.bindPopup(popup_571cefede94443c9b0069128d91468b1);
-
-            
-        
-    
-
-            var marker_a0316e9ae2c94db5b713cb64164dab18 = L.marker(
-                [-3.1,-60.02],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_861e4a4a0a61493882b648e31fa8c446);
-            
-    
-            var popup_8ca5a2d5c33846fba1bb184c251d5401 = L.popup({maxWidth: '300'});
-
-            
-                var html_5ccde1c142ad4e68a81b4dad0d1ceb40 = $('<div id="html_5ccde1c142ad4e68a81b4dad0d1ceb40" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Bolsas: 3</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_8ca5a2d5c33846fba1bb184c251d5401.setContent(html_5ccde1c142ad4e68a81b4dad0d1ceb40);
-            
-
-            marker_a0316e9ae2c94db5b713cb64164dab18.bindPopup(popup_8ca5a2d5c33846fba1bb184c251d5401);
+            marker_6a2e169c2f5649428d9414debc551aca.bindPopup(popup_7e87b36be8f244a8af5427bc58cd231c)
+            ;
 
             
         
     
-
-            var marker_da85037731aa47848d40de6f3bdf8ad6 = L.marker(
-                [-3.1,-60.02],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_861e4a4a0a61493882b648e31fa8c446);
-            
+        var marker_f775a4a1069a40f3ab6b3d098adc8caa = L.marker(
+            [-3.1, -60.02],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_3a79912a251c46719ff58d21a982fe95);
+        
     
-            var popup_23b9b6aa9958436e93277e2010e37e28 = L.popup({maxWidth: '300'});
+            var popup_d7f2075ee27a46bf886ac6176abe403b = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_854faaaf3ae14bfd97e60aab4d92a9c7 = $('<div id="html_854faaaf3ae14bfd97e60aab4d92a9c7" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Bolsas: 3</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_23b9b6aa9958436e93277e2010e37e28.setContent(html_854faaaf3ae14bfd97e60aab4d92a9c7);
+                var html_e02d5e43abe541519a2d25f9a6376394 = $('<div id="html_e02d5e43abe541519a2d25f9a6376394" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Bolsas: 3</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_d7f2075ee27a46bf886ac6176abe403b.setContent(html_e02d5e43abe541519a2d25f9a6376394);
             
 
-            marker_da85037731aa47848d40de6f3bdf8ad6.bindPopup(popup_23b9b6aa9958436e93277e2010e37e28);
+            marker_f775a4a1069a40f3ab6b3d098adc8caa.bindPopup(popup_d7f2075ee27a46bf886ac6176abe403b)
+            ;
 
             
         
     
-
-            var marker_cb8831cefe3e4b3f8f067611abfc7799 = L.marker(
-                [-5.08,-42.8],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_861e4a4a0a61493882b648e31fa8c446);
-            
+        var marker_d907fa60420845f9a20c9281d82f84e0 = L.marker(
+            [-3.1, -60.02],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_3a79912a251c46719ff58d21a982fe95);
+        
     
-            var popup_4b0c0e01e1f1478dad5c83bcceb5eb78 = L.popup({maxWidth: '300'});
+            var popup_d8b054c42ca44646add68d0001d12118 = L.popup({maxWidth: '300'
+            
+            });
 
             
-                var html_5890a9e0af9949c3adcc05b1b10d408a = $('<div id="html_5890a9e0af9949c3adcc05b1b10d408a" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Bolsas: 1</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_4b0c0e01e1f1478dad5c83bcceb5eb78.setContent(html_5890a9e0af9949c3adcc05b1b10d408a);
+                var html_9972b2623cc44960a1e51589df1e2b65 = $('<div id="html_9972b2623cc44960a1e51589df1e2b65" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Bolsas: 3</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_d8b054c42ca44646add68d0001d12118.setContent(html_9972b2623cc44960a1e51589df1e2b65);
             
 
-            marker_cb8831cefe3e4b3f8f067611abfc7799.bindPopup(popup_4b0c0e01e1f1478dad5c83bcceb5eb78);
+            marker_d907fa60420845f9a20c9281d82f84e0.bindPopup(popup_d8b054c42ca44646add68d0001d12118)
+            ;
+
+            
+        
+    
+        var marker_7b175313825f404db57732b53efa15d3 = L.marker(
+            [-5.08, -42.8],
+            {
+                icon: new L.Icon.Default()
+                }
+            ).addTo(map_3a79912a251c46719ff58d21a982fe95);
+        
+    
+            var popup_5cde1e69b25e408e9b9e811f41eff352 = L.popup({maxWidth: '300'
+            
+            });
+
+            
+                var html_00bebbe819124d12abf8f3d8b76da242 = $('<div id="html_00bebbe819124d12abf8f3d8b76da242" style="width: 100.0%; height: 100.0%;">TERESINA-PI</br> Total de Bolsas: 1</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/TERESINA-PI" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_5cde1e69b25e408e9b9e811f41eff352.setContent(html_00bebbe819124d12abf8f3d8b76da242);
+            
+
+            marker_7b175313825f404db57732b53efa15d3.bindPopup(popup_5cde1e69b25e408e9b9e811f41eff352)
+            ;
 
             
         
