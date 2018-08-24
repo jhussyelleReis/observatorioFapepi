@@ -1,6 +1,3 @@
-
-
-
 from django.shortcuts import render
 from .models import *
 #from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -8,6 +5,8 @@ from .models import *
 import folium
 import os
 import pandas as pd
+from html.parser import HTMLParser
+
 
 def listar_bolsas_restri(request, estado, template_name="bolsas_list_restri.html"):
     bolsas = Bolsa.objects.filter(estado=estado)
@@ -45,6 +44,15 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
         folium.Marker(location=[la, lo], popup=(folium.Popup(es + '</br> Total de Bolsas: '+ str(totalDeBolsas[la]) + '</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_bolsas.html"))
+
+    with open("app/templates/mapa_bolsas.html", 'r') as f:
+        texto = f.readlines()
+    with open("app/templates/mapa_bolsas.html", 'w') as f:
+        for i in texto:
+            if (i.count("rawgit")):
+                f.write('    <link rel="stylesheet" href="https://cdn.rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>' + '\n')
+            else:
+                f.write(i)
 
     return render(request, template_name)
 
@@ -100,6 +108,16 @@ def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.
 
     mapa.save(os.path.join('app/templates',"mapa_participacao_eventos.html"))
 
+    with open("app/templates/mapa_participacao_eventos.html", 'r') as f:
+        texto = f.readlines()
+    with open("app/templates/mapa_participacao_eventos.html", 'w') as f:
+        for i in texto:
+            if (i.count("rawgit")):
+                f.write('    <link rel="stylesheet" href="https://cdn.rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>' + '\n')
+            else:
+                f.write(i)
+
+
     return render(request, template_name)
 
 def listar_participacao_eventos(request, categoria, template_name="eventos_participacao_list.html"):
@@ -154,6 +172,15 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
 
     mapa.save(os.path.join('app/templates', "mapa_organizacao_eventos.html"))
 
+    with open("app/templates/mapa_organizacao_eventos.html", 'r') as f:
+        texto = f.readlines()
+    with open("app/templates/mapa_organizacao_eventos.html", 'w') as f:
+        for i in texto:
+            if (i.count("rawgit")):
+                f.write('    <link rel="stylesheet" href="https://cdn.rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>' + '\n')
+            else:
+                f.write(i)
+
     return render(request, template_name)
 
 def listar_organizacao_eventos(request, categoria, template_name="eventos_organizacao_list.html"):
@@ -206,6 +233,15 @@ def mapa_projetos(request, template_name="mapa_projetos.html"):
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_projetos.html"))
+
+    with open("app/templates/mapa_projetos.html", 'r') as f:
+        texto = f.readlines()
+    with open("app/templates/mapa_projetos.html", 'w') as f:
+        for i in texto:
+            if (i.count("rawgit")):
+                f.write('    <link rel="stylesheet" href="https://cdn.rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>' + '\n')
+            else:
+                f.write(i)
 
     return render(request, template_name)
 
@@ -267,6 +303,16 @@ def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_publicacoes.html"))
+
+    with open("app/templates/mapa_publicacoes.html", 'r') as f:
+        texto = f.readlines()
+    with open("app/templates/mapa_publicacoes.html", 'w') as f:
+        for i in texto:
+            if (i.count("rawgit")):
+                f.write('    <link rel="stylesheet" href="https://cdn.rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>' + '\n')
+            else:
+                f.write(i)
+
 
     return render(request, template_name)
 

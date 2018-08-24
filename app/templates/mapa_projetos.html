@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
     
-    <style>#map_b4e994d7881c4e089d9bfffb86d421f8 {
+    <style>#map_e85ce566ff51402faf9e6aeb4633b993 {
         position: relative;
         width: 100.0%;
         height: 100.0%;
@@ -26,7 +26,7 @@
 </head>
 <body>    
     
-    <div class="folium-map" id="map_b4e994d7881c4e089d9bfffb86d421f8" ></div>
+    <div class="folium-map" id="map_e85ce566ff51402faf9e6aeb4633b993" ></div>
 </body>
 <script>    
     
@@ -34,8 +34,8 @@
         var bounds = null;
     
 
-    var map_b4e994d7881c4e089d9bfffb86d421f8 = L.map(
-        'map_b4e994d7881c4e089d9bfffb86d421f8', {
+    var map_e85ce566ff51402faf9e6aeb4633b993 = L.map(
+        'map_e85ce566ff51402faf9e6aeb4633b993', {
         center: [-15.788497, -47.879873],
         zoom: 4,
         maxBounds: bounds,
@@ -47,7 +47,7 @@
 
     
     
-    var tile_layer_14d481ea0d1f47eda1c62f8cabbc9d6b = L.tileLayer(
+    var tile_layer_e9c338af95d648a281e76c24e8f8f1de = L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
         "attribution": null,
@@ -57,26 +57,26 @@
         "minZoom": 0,
         "noWrap": false,
         "subdomains": "abc"
-}).addTo(map_b4e994d7881c4e089d9bfffb86d421f8);
+}).addTo(map_e85ce566ff51402faf9e6aeb4633b993);
     
-        var marker_38e8d1ce4fff44ac8e5d2dd2ab0204f3 = L.marker(
+        var marker_1f45472ffe3945e3be514063e696cdb2 = L.marker(
             [-3.1, -60.02],
             {
                 icon: new L.Icon.Default()
                 }
-            ).addTo(map_b4e994d7881c4e089d9bfffb86d421f8);
+            ).addTo(map_e85ce566ff51402faf9e6aeb4633b993);
         
     
-            var popup_fff2d2895b794af4aba2e3e4bc07aa94 = L.popup({maxWidth: '300'
+            var popup_2ea5c7a390ee4dcca087ced018f50635 = L.popup({maxWidth: '300'
             
             });
 
             
-                var html_936edf758a1d408cb57917a06f05aece = $('<div id="html_936edf758a1d408cb57917a06f05aece" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Projetos: 1</br><a href="http://127.0.0.1:8000/projeto/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
-                popup_fff2d2895b794af4aba2e3e4bc07aa94.setContent(html_936edf758a1d408cb57917a06f05aece);
+                var html_453cb37e4c264ed4bd543e2bee5871ec = $('<div id="html_453cb37e4c264ed4bd543e2bee5871ec" style="width: 100.0%; height: 100.0%;">MANAUS-AM</br> Total de Projetos: 1</br><a href="http://127.0.0.1:8000/projeto/listarrestri/MANAUS-AM" target="_blank"> Pesquisadores </a></div>')[0];
+                popup_2ea5c7a390ee4dcca087ced018f50635.setContent(html_453cb37e4c264ed4bd543e2bee5871ec);
             
 
-            marker_38e8d1ce4fff44ac8e5d2dd2ab0204f3.bindPopup(popup_fff2d2895b794af4aba2e3e4bc07aa94)
+            marker_1f45472ffe3945e3be514063e696cdb2.bindPopup(popup_2ea5c7a390ee4dcca087ced018f50635)
             ;
 
             
