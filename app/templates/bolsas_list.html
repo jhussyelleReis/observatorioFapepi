@@ -6,6 +6,19 @@
 Observatório FAPEPI
 {% endblock title %}
 
+{% block instituicoes %}
+        <option class="caret" label="Escolha" value="Escolha" selected="selected">Instituições</option>
+        {% for instituicao in instituicoes %}
+            <option class="caret" label="{{instituicao.nome}}" value="{{instituicao.nome}}" >{{instituicao.nome}}</option>
+        {% endfor %}
+{% endblock instituicoes %}
+
+{% block programa %}
+        <option class="caret" label="Escolha" value="Escolha" selected="selected">Programa</option>
+        {% for programa in programas %}
+            <option class="caret" label="{{programa.nome}}" value="{{programa.nome}}" >{{programa.nome}}</option>
+        {% endfor %}
+{% endblock programa %}
 
 {% block totalBolsas %} {{ bolsas|length }} {% endblock totalBolsas %}
 
@@ -36,7 +49,7 @@ Observatório FAPEPI
 
 {% block contentDireita %}
 
-    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/bolsa/mapa/bolsas">
+    <object width="1080px" height="400px" type="text/html" data="http://127.0.0.1:8000/bolsa/mapa/bolsas/">
 
     </object>
 

@@ -5,6 +5,8 @@ from .models import *
 import folium
 import os
 import pandas as pd
+import sys
+
 from html.parser import HTMLParser
 
 
@@ -33,10 +35,6 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
 
     municipios = dados['Mun/UF'][:500].values
 
-    print(municipios)
-
-    print(estados)
-
     for la, lo, es in zip(lat, long, estados):
         if((dados[dados.LATITUDE == la]) is not None ):
             totalDeBolsas = pd.value_counts(dados['LATITUDE'])
@@ -58,9 +56,19 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
 
 def listar_bolsas(request, categoria, template_name="bolsas_list.html"):
 
-    mapa_bolsas(request, "mapa_bolsas.html")
+    query = request.GET.get("busca", '')
 
     bolsas = Bolsa.objects.all()
+
+    try:
+        if query:
+            pesquisador = Pesquisador.objects.get(nome__contains=query)
+            bolsas = Bolsa.objects.filter(pesquisador_id=pesquisador.pk)
+            mapa_bolsas(request, "mapa_bolsas.html")
+        else:
+            mapa_bolsas(request, "mapa_bolsas.html")
+    except Exception :
+        print(sys.exc_info()[0])
 
     eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
 
@@ -70,9 +78,13 @@ def listar_bolsas(request, categoria, template_name="bolsas_list.html"):
 
     publicacoes = Publicacao.objects.all()
 
+    instituicoes = Instituicao.objects.all()
+
+    programas = Programa.objects.all()
+
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos,
-                                           'publicacoes': publicacoes})
+                                           'publicacoes': publicacoes, 'instituicoes':instituicoes, 'programas':programas})
 
 def listar_participacao_evento_restri(request, estado, template_name="eventos_participacao_list_restri.html"):
     eventosParticipacao = Evento.objects.filter(tipo='participacao', estado=estado)
@@ -352,6 +364,11 @@ def observatorio_default(request, template_name="observatorio_default.html"):
 
     publicacoes = Publicacao.objects.all()
 
+    instituicoes = Instituicao.objects.all()
+
+    programas = Programa.objects.all()
+
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos,
-                                           'publicacoes': publicacoes})
+                                           'publicacoes': publicacoes, 'instituicoes': instituicoes,
+                                           'programas': programas})

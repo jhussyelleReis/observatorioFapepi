@@ -17,30 +17,26 @@
 
     <div id="filtros">
 
-        <h5 id="tituloFiltro">Filtros de Pesquisa</h5>
-
         <div class="row">
-            <form method="get">
+            <form action="/bolsa/listar/bolsas/" method="get">
                 <div class="col-md-12">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="busca" placeholder="Buscar">
-                        <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">Pesquisar</button>
-                        </span>
+                        <input type="text" class="form-control" name="busca" placeholder="Buscar Pesquisador">
+                        <!--div>
+                        <select class="form-control" name="instituicao">
+                            {% block instituicoes %} {% endblock %}
+                        </select>
                     </div>
                     <br/>
                     <div>
-                        <select>
-                            <option label="Ano" value="Ano" selected="selected">Ano</option>
-                            <option label="2018" value="2018" >2018</option>
-                            <option label="2017" value="2017" >2017</option>
-                            <option label="2016" value="2016" >2016</option>
-                            <option label="2015" value="2015" >2015</option>
-                            <option label="2014" value="2014" >2014</option>
-                            <option label="2013" value="2013" >2013</option>
-                            <option label="2012" value="2012" >2012</option>
-                            <option label="2011" value="2011" >2011</option>
+                        <select class="form-control" name="programa">
+                            {% block programa %} {% endblock %}
                         </select>
+                    </div>
+                    <br/-->
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">Pesquisar</button>
+                        </span>
                     </div>
                 </div>
             </form>
