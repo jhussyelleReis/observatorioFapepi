@@ -6,6 +6,33 @@
 Observatório FAPEPI
 {% endblock title %}
 
+{% block busca %}
+
+    <form method="get">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" class="form-control" name="busca" placeholder="Buscar Pesquisador">
+                <!--div>
+                        <select class="form-control" name="instituicao">
+                            {% block instituicoes %} {% endblock %}
+                        </select>
+                    </div>
+                    <br/>
+                    <div>
+                        <select class="form-control" name="programa">
+                            {% block programa %} {% endblock %}
+                        </select>
+                    </div>
+                    <br/-->
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Pesquisar</button>
+                </span>
+            </div>
+        </div>
+    </form>
+
+{% endblock busca %}
+
 {% block totalBolsas %} {{ bolsas|length }} {% endblock totalBolsas %}
 
 {% block totalProjetos %} {{ projetos|length }}{% endblock totalProjetos %}

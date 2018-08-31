@@ -6,19 +6,32 @@
 Observatório FAPEPI
 {% endblock title %}
 
-{% block instituicoes %}
-        <option class="caret" label="Escolha" value="Escolha" selected="selected">Instituições</option>
-        {% for instituicao in instituicoes %}
-            <option class="caret" label="{{instituicao.nome}}" value="{{instituicao.nome}}" >{{instituicao.nome}}</option>
-        {% endfor %}
-{% endblock instituicoes %}
+{% block busca %}
 
-{% block programa %}
-        <option class="caret" label="Escolha" value="Escolha" selected="selected">Programa</option>
-        {% for programa in programas %}
-            <option class="caret" label="{{programa.nome}}" value="{{programa.nome}}" >{{programa.nome}}</option>
-        {% endfor %}
-{% endblock programa %}
+    <form method="get">
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" class="form-control" name="busca" placeholder="Buscar Pesquisador">
+                <!--div>
+                        <select class="form-control" name="instituicao">
+                            {% block instituicoes %} {% endblock %}
+                        </select>
+                    </div>
+                    <br/>
+                    <div>
+                        <select class="form-control" name="programa">
+                            {% block programa %} {% endblock %}
+                        </select>
+                    </div>
+                    <br/-->
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Pesquisar</button>
+                </span>
+            </div>
+        </div>
+    </form>
+
+{% endblock busca %}
 
 {% block totalBolsas %} {{ bolsas|length }} {% endblock totalBolsas %}
 

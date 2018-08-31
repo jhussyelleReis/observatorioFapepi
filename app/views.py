@@ -134,13 +134,23 @@ def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.
 
 def listar_participacao_eventos(request, categoria, template_name="eventos_participacao_list.html"):
 
-    mapa_participacao_eventos(request, "mapa_participacao_eventos.html")
+    query = request.GET.get("busca", '')
+
+    eventosParticipacao = Evento.objects.filter(tipo='participacao')
+
+    try:
+        if query:
+            pesquisador = Pesquisador.objects.get(nome__contains=query)
+            eventosParticipacao = Evento.objects.filter(pesquisador_id=pesquisador.pk)
+            mapa_participacao_eventos(request, "mapa_participacao_eventos.html")
+        else:
+            mapa_participacao_eventos(request, "mapa_participacao_eventos.html")
+    except Exception:
+        print(sys.exc_info()[0])
 
     bolsas = Bolsa.objects.all()
 
     eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
-
-    eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
     projetos = Projeto.objects.all()
 
@@ -197,11 +207,21 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
 
 def listar_organizacao_eventos(request, categoria, template_name="eventos_organizacao_list.html"):
 
-    mapa_organizacao_eventos(request, "mapa_organizacao_eventos.html")
-
-    bolsas = Bolsa.objects.all()
+    query = request.GET.get("busca", '')
 
     eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
+
+    try:
+        if query:
+            pesquisador = Pesquisador.objects.get(nome__contains=query)
+            eventosOrganizacao = Evento.objects.filter(pesquisador_id=pesquisador.pk)
+            mapa_organizacao_eventos(request, "mapa_organizacao_eventos.html")
+        else:
+            mapa_organizacao_eventos(request, "mapa_organizacao_eventos.html")
+    except Exception:
+        print(sys.exc_info()[0])
+
+    bolsas = Bolsa.objects.all()
 
     eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
@@ -259,15 +279,25 @@ def mapa_projetos(request, template_name="mapa_projetos.html"):
 
 def listar_projetos(request, categoria, template_name="projetos_list.html"):
 
-    mapa_projetos(request, "mapa_projetos.html")
+    query = request.GET.get("busca", '')
+
+    projetos = Projeto.objects.all()
+
+    try:
+        if query:
+            pesquisador = Pesquisador.objects.get(nome__contains=query)
+            projetos = Projeto.objects.filter(pesquisador_id=pesquisador.pk)
+            mapa_projetos(request, "mapa_projetos.html")
+        else:
+            mapa_projetos(request, "mapa_projetos.html")
+    except Exception:
+        print(sys.exc_info()[0])
 
     bolsas = Bolsa.objects.all()
 
     eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
 
     eventosParticipacao = Evento.objects.filter(tipo='participacao')
-
-    projetos = Projeto.objects.all()
 
     publicacoes = Publicacao.objects.all()
 
@@ -330,7 +360,19 @@ def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
 
 def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"):
 
-    mapa_publicoes(request, "mapa_publicacoes.html")
+    query = request.GET.get("busca", '')
+
+    publicacoes = Publicacao.objects.all()
+
+    try:
+        if query:
+            pesquisador = Pesquisador.objects.get(nome__contains=query)
+            publicacoes = Publicacao.objects.filter(pesquisador_id=pesquisador.pk)
+            mapa_publicoes(request, "mapa_publicacoes.html")
+        else:
+            mapa_publicoes(request, "mapa_publicacoes.html")
+    except Exception:
+        print(sys.exc_info()[0])
 
     bolsas = Bolsa.objects.all()
 
@@ -339,8 +381,6 @@ def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"
     eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
     projetos = Projeto.objects.all()
-
-    publicacoes = Publicacao.objects.all()
 
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos, 'publicacoes':publicacoes})
