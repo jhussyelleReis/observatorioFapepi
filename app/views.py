@@ -385,6 +385,10 @@ def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos, 'publicacoes':publicacoes})
 
+def recursos(request, template_name="recursos.html"):
+    editais = Edital.objects.all()
+    return render(request, template_name, {'editais': editais})
+
 def observatorio_default(request, template_name="observatorio_default.html"):
 
     mapa_bolsas(request, "mapa_bolsas.html")

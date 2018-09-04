@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="title">
+        Observatório FAPEPI
+    </title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block favicon %}<link href="{% static 'media/images/favicon.png' %}" rel="shortcut icon" />{% endblock %}
+</head>
+<body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Observatório Fapepi</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'listar_bolsas' categoria='bolsas' %}">Mapas</a></li>
+            <li class="active"><a href="{% url 'recursos' %}">Recursos</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="">Sobre</a></li>
+            <li ><a href="">Contatos</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <header class="cover"></header>
+    <div id="filtros">
+        <div class="row">
+            <form method="get">
+                <div class="col-md-12">
+                    <div >
+                        <div>
+                            <select class="form-control" name="Ano">
+                                <option value="Ano" selected>Ano</option>
+                                <option value="2018" >2018</option>
+                                <option value="2017" >2017</option>
+                                <option value="2016" >2016</option>
+                                <option value="2015" >2015</option>
+                                <option value="2014" >2014</option>
+                                <option value="2013" >2013</option>
+                                <option value="2012" >2012</option>
+                                <option value="2011" >2011</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div>
+                             <select class="form-control" name="Tipo">
+                                 <option value="Tipo" selected>Tipo</option>
+                                <option value="bolsa">Bolsa</option>
+                                <option value="participacao" >Participação em Eventos</option>
+                                <option value="organizacao" >Organização de Eventos</option>
+                                <option value="projeto" >Projeto</option>
+                                <option value="publicacao" >Publicação</option>
+                            </select>
+                        </div>
+                        <br/>
+                        <div>
+                            <button class="btn btn-default" type="submit">Pesquisar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <nav class="navbar navbar-default nav-justified">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Recursos</a>
+            </div>
+        </div>
+    </nav>
+    <div id="container-fluid">
+        <div>
+            {% for edital in editais %}
+                <h5> Edital: {{ edital.titulo }} </h5>
+                    <h6>
+                        <p>Tipo: {{ edital.tipo}} </p>
+                        <p>Descrição: {{ edital.descricao }} </p>
+                        <p>Valor: {{ edital.recurso }} </p>
+                    </h6>
+                <hr/>
+            {% endfor %}
+        </div>
+    </div>
+</body>
