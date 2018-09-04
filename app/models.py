@@ -249,4 +249,41 @@ class Evento(models.Model):
         verbose_name_plural = "Eventos"
         verbose_name = "Evento"
 
+class Edital(models.Model):
 
+    TIPO_CHOICES = (("bolsa", "Bolsa"), ("participacao", "Participação em Eventos"),
+                    ("organizacao", "Organização de Eventos"), ("projeto", "Projeto"),
+                    ("publicacao", "Publicação"))
+    ANO_CHOICES = (("2018", "2018"), ("2017", "2017"),("2016", "2016"), ("2015", "2015"),("2014", "1014"),
+                   ("2013", "2013"), ("2012", "2012"), ("2011", "2011"))
+
+    titulo = models.CharField(max_length=200, null=False, verbose_name="Título")
+    tipo = models.CharField(max_length=100, null=False, verbose_name="Tipo de Aplicação", choices=TIPO_CHOICES)
+    descricao = models.CharField(max_length=200, null=False, verbose_name="Descrição")
+    ano = models.CharField(max_length=200, null=False, verbose_name="Ano", choices=ANO_CHOICES)
+    vigencia = models.DateField(null=False, verbose_name="Vigência")
+    programa = models.ForeignKey(Programa, verbose_name="Programa")
+    recurso = models.DecimalField(max_digits=19, decimal_places=10, null=False, verbose_name="Valor Global do Edital", default=0)
+    #faixa = models.ForeignKey(Faixa, verbose_name="Faixas")
+
+
+    def __str__(self):
+        return self.titulo
+
+    class Meta:
+        verbose_name_plural = "Editais"
+        verbose_name = "Edital"
+
+class Faixa(models.Model):
+
+    nome = models.CharField(max_length=200, null=False, verbose_name="Nome")
+    valor = models.DecimalField(max_digits=19, decimal_places=10, null=False, verbose_name="Valor", default=0)
+    quantidade = models.IntegerField(null=False, verbose_name="Quantidade", default=0)
+    edital = models.ForeignKey(Edital, verbose_name="Faixas")
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Faixas de Financiamento"
+        verbose_name = "Faixa"

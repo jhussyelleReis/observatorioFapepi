@@ -41,6 +41,17 @@ class EventoAdmin(admin.ModelAdmin):
     list_filter = ['titulo', 'pesquisador', 'tipo','estado']
     search_fields = ['titulo']
 
+class FaixaInline(admin.TabularInline):
+    model = Faixa
+    extra = 0
+
+class EditalAdmin(admin.ModelAdmin):
+    #fieldsets = [
+    #    ('Detalhes da Faixa', {'fields': ('nome','valor','quantidade')} )
+   # ]
+    inlines = [FaixaInline]
+
+
 admin.site.register(Bolsa, BolsaAdmin)
 admin.site.register(Pesquisador, PesquisadorAdmin)
 admin.site.register(Programa, ProgramaAdmin)
@@ -48,3 +59,4 @@ admin.site.register(Instituicao, InstituicaoAdmin)
 admin.site.register(Projeto, ProjetoAdmin)
 admin.site.register(Publicacao, PublicacaoAdmin)
 admin.site.register(Evento, EventoAdmin)
+admin.site.register(Edital, EditalAdmin)
