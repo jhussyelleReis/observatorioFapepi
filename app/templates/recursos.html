@@ -37,7 +37,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
     <header class="cover"></header>
     <div id="filtros">
         <div class="row">
@@ -77,24 +76,33 @@
             </form>
         </div>
     </div>
-    <nav class="navbar navbar-default nav-justified">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand">Recursos</a>
-            </div>
-        </div>
-    </nav>
     <div id="container-fluid">
-        <div>
-            {% for edital in editais %}
-                <h5> Edital: {{ edital.titulo }} </h5>
-                    <h6>
-                        <p>Tipo: {{ edital.tipo}} </p>
-                        <p>Descrição: {{ edital.descricao }} </p>
-                        <p>Valor: {{ edital.recurso }} </p>
-                    </h6>
-                <hr/>
-            {% endfor %}
+        <div id="tabela">
+            <table class="table table-bordered">
+                <tr class="info">
+                    <th>Editais</th>
+                    <th>Valores das Faixas</th>
+                    <th>Valor Global</th>
+                </tr>
+                {% for edital in editais %}
+                    <tr>
+                        <td>{{edital.titulo}}</td>
+                        {% for faixa in faixas %}
+                            {% if faixa.edital.pk == edital.pk %}
+                                <td>
+                                    <h6>Nome: {{faixa.nome}}</h6>
+                                    <h6>Valor: {{faixa.valor}}</h6>
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>R$ {{edital.recurso}}</td>
+                    </tr>
+                {% endfor %}
+                <tr class="active">
+                    <td>Valor Total</td>
+                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </body>

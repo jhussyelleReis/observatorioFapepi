@@ -386,8 +386,14 @@ def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos, 'publicacoes':publicacoes})
 
 def recursos(request, template_name="recursos.html"):
+
     editais = Edital.objects.all()
-    return render(request, template_name, {'editais': editais})
+    totalRecursos = 0
+    for edital in editais:
+        totalRecursos+= edital.recurso
+
+    faixas = Faixa.objects.all()
+    return render(request, template_name, {'editais': editais, 'faixas': faixas, 'totalRecursos': totalRecursos})
 
 def observatorio_default(request, template_name="observatorio_default.html"):
 
