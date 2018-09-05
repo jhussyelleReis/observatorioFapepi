@@ -385,15 +385,37 @@ def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"
     return render(request, template_name, {'bolsas': bolsas, 'eventosOrganizacao': eventosOrganizacao,
                                            'eventosParticipacao': eventosParticipacao, 'projetos': projetos, 'publicacoes':publicacoes})
 
-def recursos(request, template_name="recursos.html"):
+def recursos(request, tipo, template_name="recursosdefault.html"):
 
-    editais = Edital.objects.all()
+    pesquisar = request.GET.get("pesquisar", '')
+
     totalRecursos = 0
-    for edital in editais:
-        totalRecursos+= edital.recurso
+    totalQuantidade = 0
 
     faixas = Faixa.objects.all()
-    return render(request, template_name, {'editais': editais, 'faixas': faixas, 'totalRecursos': totalRecursos})
+
+    if tipo != "todos":
+        if str(pesquisar) == "bolsa":
+            print(pesquisar)
+            editais = Edital.objects.filter(tipo='bolsa')
+            print(editais)
+            faixas = Faixa.objects.filter(editais_id=editais.pk)
+            print(faixas)
+            for edital in editais:
+                totalRecursos += edital.recurso
+                for faixa in faixas:
+                    totalQuantidade += faixa.quantidade
+        else:
+            editais = Edital.objects.filter(tipo=pesquisar)
+            for edital in editais:
+                totalRecursos += edital.recurso
+    else:
+        editais = Edital.objects.all()
+        for edital in editais:
+            totalRecursos += edital.recurso
+
+    return render(request, template_name, {'editais': editais, 'faixas': faixas, 'totalRecursos': totalRecursos,
+                                           'totalQuantidade': totalQuantidade})
 
 def observatorio_default(request, template_name="observatorio_default.html"):
 
