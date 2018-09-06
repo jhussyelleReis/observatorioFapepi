@@ -396,6 +396,10 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
 
     faixas = Faixa.objects.all()
 
+    editais = Edital.objects.all()
+    for edital in editais:
+        totalRecursos += edital.recurso
+
     if tipo != "todos":
         if tipo == 'bolsa':
             editais = Edital.objects.filter(tipo='bolsa')
@@ -434,6 +438,9 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
 
     return render(request, template_name, {'editais': editais, 'faixas': faixas, 'totalRecursos': totalRecursos,
                                            'totalQuantidade': totalQuantidade, 'somaQuantidades':somaQuantidades})
+
+def sobre(request, template_name="sobre.html"):
+    return render(request, template_name)
 
 def observatorio_default(request, template_name="observatorio_default.html"):
 

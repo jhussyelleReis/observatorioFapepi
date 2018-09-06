@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title class="title">
+        Observatório FAPEPI
+    </title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static '/css/base.css' %}">
+    {% block favicon %}<link href="{% static 'media/images/favicon.png' %}" rel="shortcut icon" />{% endblock %}
+</head>
+<body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'listar_bolsas' categoria='bolsas' %}">Observatório Fapepi</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'listar_bolsas' categoria='bolsas' %}">Mapas</a></li>
+            <li><a href="{% url 'recursos' tipo='todos' %}">Recursos</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="{% url 'sobre' %}">Sobre</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <header class="cover"></header>
+    <br/>
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>
+            O Observatório Fapepi é um sistema que proporciona o olhar sobre todos os Editais e Pesquisadores ligados a Fundação de Amparo a Pesquisa do Piauí(FAPEPI).
+        </p>
+        <p>
+            Sua primeira versão analisa dados do território brasileiro.</p>
+        </p>
+        <p>
+            Desenvolvido pela ATI - Fapepi - DTC.
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+</body>

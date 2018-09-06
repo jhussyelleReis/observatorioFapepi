@@ -19,7 +19,7 @@ urlpatterns = [
     url(r'^publicacao/listarrestri/(?P<estado>[\w\-]+)/$', views.listar_publicacoes_restri, name='listar_publicacao_restri'),
     url(r'^publicacao/listar/(?P<categoria>[\w\-]+)/$', views.listar_publicacoes, name='listar_publicacoes'),
     url(r'^publicacao/mapa/publicacoes/$', views.mapa_publicoes, name='mapa_publicacoes'),
-    url(r'^recursos/(?P<tipo>[\w\-]+)/$$', views.recursos, name='recursos'),
-
+    url(r'^recursos/(?P<tipo>[\w\-]+)/$', views.recursos, name='recursos'),
+    url(r'^sobre/$', views.sobre, name='sobre'),
 ]
 
