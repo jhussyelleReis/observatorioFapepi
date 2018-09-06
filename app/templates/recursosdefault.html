@@ -137,7 +137,13 @@
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td>{{totalQuantidade}}</td>
+                            <td>
+                                {% for k, v in somaQuantidades.items %}
+                                    {% if k == edital.pk %}
+                                        {{ v }}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}

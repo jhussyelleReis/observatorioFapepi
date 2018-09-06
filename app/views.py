@@ -388,23 +388,25 @@ def listar_publicacoes(request, categoria, template_name="publicacoes_list.html"
 def recursos(request, tipo, template_name="recursosdefault.html"):
 
     pesquisar = request.GET.get("pesquisar", '')
+    tipo = pesquisar
 
     totalRecursos = 0
     totalQuantidade = 0
+    somaQuantidades = {}
 
     faixas = Faixa.objects.all()
 
     if tipo != "todos":
-        if str(pesquisar) == "bolsa":
-            print(pesquisar)
+        if tipo == 'bolsa':
             editais = Edital.objects.filter(tipo='bolsa')
-            print(editais)
-            faixas = Faixa.objects.filter(editais_id=editais.pk)
-            print(faixas)
             for edital in editais:
-                totalRecursos += edital.recurso
+                soma = 0
                 for faixa in faixas:
-                    totalQuantidade += faixa.quantidade
+                    if faixa.edital.pk == edital.pk:
+                        soma += faixa.quantidade
+                        totalQuantidade += faixa.quantidade
+                somaQuantidades[edital.pk] = soma
+                print(somaQuantidades)
         else:
             editais = Edital.objects.filter(tipo=pesquisar)
             for edital in editais:
@@ -415,7 +417,7 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
             totalRecursos += edital.recurso
 
     return render(request, template_name, {'editais': editais, 'faixas': faixas, 'totalRecursos': totalRecursos,
-                                           'totalQuantidade': totalQuantidade})
+                                           'totalQuantidade': totalQuantidade, 'somaQuantidades':somaQuantidades})
 
 def observatorio_default(request, template_name="observatorio_default.html"):
 
