@@ -153,6 +153,118 @@
                 </tr>
             </table>
             {% endif %}
+            {% if request.GET.pesquisar == 'participacao' %}
+            <table class="table table-bordered">
+                <tr class="info">
+                    <th>Edital</th>
+                    <th>Faixas de Valores</th>
+                    <th>Valor Global</th>
+                </tr>
+                {% for edital in editais %}
+                    <tr>
+                        {% if edital.tipo == 'participacao'%}
+                            <td>{{edital.titulo}}</td>
+                            <td>
+                                {% for faixa in faixas %}
+                                    {% if faixa.edital.pk == edital.pk %}
+                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>R$ {{edital.recurso}}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                <tr class="active">
+                    <td>Total</td>
+                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                </tr>
+            </table>
+            {% endif %}
+            {% if request.GET.pesquisar == 'organizacao' %}
+            <table class="table table-bordered">
+                <tr class="info">
+                    <th>Edital</th>
+                    <th>Faixas de Valores</th>
+                    <th>Valor Global</th>
+                </tr>
+                {% for edital in editais %}
+                    <tr>
+                        {% if edital.tipo == 'organizacao'%}
+                            <td>{{edital.titulo}}</td>
+                            <td>
+                                {% for faixa in faixas %}
+                                    {% if faixa.edital.pk == edital.pk %}
+                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>R$ {{edital.recurso}}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                <tr class="active">
+                    <td>Total</td>
+                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                </tr>
+            </table>
+            {% endif %}
+            {% if request.GET.pesquisar == 'projeto' %}
+            <table class="table table-bordered">
+                <tr class="info">
+                    <th>Edital</th>
+                    <th>Faixas de Valores</th>
+                    <th>Valor Global</th>
+                </tr>
+                {% for edital in editais %}
+                    <tr>
+                        {% if edital.tipo == 'projeto'%}
+                            <td>{{edital.titulo}}</td>
+                            <td>
+                                {% for faixa in faixas %}
+                                    {% if faixa.edital.pk == edital.pk %}
+                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>R$ {{edital.recurso}}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                <tr class="active">
+                    <td>Total</td>
+                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                </tr>
+            </table>
+            {% endif %}
+            {% if request.GET.pesquisar == 'publicacao' %}
+            <table class="table table-bordered">
+                <tr class="info">
+                    <th>Edital</th>
+                    <th>Faixas de Valores</th>
+                    <th>Valor Global</th>
+                </tr>
+                {% for edital in editais %}
+                    <tr>
+                        {% if edital.tipo == 'publicacao'%}
+                            <td>{{edital.titulo}}</td>
+                            <td>
+                                {% for faixa in faixas %}
+                                    {% if faixa.edital.pk == edital.pk %}
+                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>R$ {{edital.recurso}}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                <tr class="active">
+                    <td>Total</td>
+                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                </tr>
+            </table>
+            {% endif %}
         </div>
     </div>
 </body>
