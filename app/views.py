@@ -412,26 +412,31 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
                 somaQuantidades[edital.pk] = soma
                 print(somaQuantidades)
         else:
+            totalRecursos = 0
             if tipo == 'participacao':
                 editais = Edital.objects.filter(tipo='participacao')
                 for edital in editais:
                     totalRecursos += edital.recurso
             else:
+               totalRecursos = 0
                if tipo == 'organizacao':
                     editais = Edital.objects.filter(tipo='organizacao')
                     for edital in editais:
                         totalRecursos += edital.recurso
                else:
+                   totalRecursos = 0
                    if tipo == 'projeto':
                        editais = Edital.objects.filter(tipo='projeto')
                        for edital in editais:
                            totalRecursos += edital.recurso
                    else:
+                       totalRecursos = 0
                        if tipo == 'publicacao':
                            editais = Edital.objects.filter(tipo='publicacao')
                            for edital in editais:
                                totalRecursos += edital.recurso
     else:
+        totalRecursos = 0
         editais = Edital.objects.all()
         for edital in editais:
             totalRecursos += edital.recurso
