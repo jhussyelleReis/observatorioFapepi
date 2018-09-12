@@ -99,22 +99,37 @@
                     <th>Valores das Faixas</th>
                     <th>Valor Global</th>
                 </tr>
+                <!--Percorrendo todos os editais-->
                 {% for edital in editais %}
                     <tr>
                         <td>{{edital.titulo}}</td>
                         <td>
+                        <!--Percorrendo todas as faixas-->
                         {% for faixa in faixas %}
                             {% if faixa.edital.pk == edital.pk %}
-                            {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                            <!--Imprimindo o nome da faixa correspondente ao edital-->
+                            {{faixa.nome}} -
+                                <!--Imprimindo o valor formatado da faixa correspondente ao edital(Pegar pelo id da faixa)-->
+                                {% for k, v in faixaValorFormatado.items %}
+                                    {% if k == faixa.pk %}
+                                        {{ v }} <br/>
+                                    {% endif %}
+                                {% endfor %}
                             {% endif %}
                         {% endfor %}
                         </td>
-                        <td>R$ {{edital.recurso}}</td>
+                        <td>
+                            {% for k, v in editalRecursoFormatado.items %}
+                                    {% if k == edital.pk %}
+                                        {{ v }}
+                                    {% endif %}
+                                {% endfor %}
+                        </td>
                     </tr>
                 {% endfor %}
                 <tr class="active">
                     <td>Valor Total</td>
-                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                    <td align="right" colspan="2">{{totalRecursos}}</td>
                 </tr>
             </table>
             {% endif %}
@@ -166,17 +181,30 @@
                             <td>
                                 {% for faixa in faixas %}
                                     {% if faixa.edital.pk == edital.pk %}
-                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                        <!--Imprimindo o nome da faixa correspondente ao edital-->
+                                        {{faixa.nome}} -
+                                            <!--Imprimindo o valor formatado da faixa correspondente ao edital(Pegar pelo id da faixa)-->
+                                            {% for k, v in faixaValorFormatado.items %}
+                                                {% if k == faixa.pk %}
+                                                    {{ v }} <br/>
+                                                {% endif %}
+                                            {% endfor %}
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td>R$ {{edital.recurso}}</td>
+                            <td>
+                                {% for k, v in editalRecursoFormatado.items %}
+                                    {% if k == edital.pk %}
+                                        {{ v }}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}
                 <tr class="active">
                     <td>Total</td>
-                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                    <td align="right" colspan="2">{{totalRecursos}}</td>
                 </tr>
             </table>
             {% endif %}
@@ -194,17 +222,30 @@
                             <td>
                                 {% for faixa in faixas %}
                                     {% if faixa.edital.pk == edital.pk %}
-                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                         <!--Imprimindo o nome da faixa correspondente ao edital-->
+                                        {{faixa.nome}} -
+                                            <!--Imprimindo o valor formatado da faixa correspondente ao edital(Pegar pelo id da faixa)-->
+                                            {% for k, v in faixaValorFormatado.items %}
+                                                {% if k == faixa.pk %}
+                                                    {{ v }} <br/>
+                                                {% endif %}
+                                            {% endfor %}
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td>R$ {{edital.recurso}}</td>
+                            <td>
+                                {% for k, v in editalRecursoFormatado.items %}
+                                    {% if k == edital.pk %}
+                                        {{ v }}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}
                 <tr class="active">
                     <td>Total</td>
-                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                    <td align="right" colspan="2">{{totalRecursos}}</td>
                 </tr>
             </table>
             {% endif %}
@@ -222,17 +263,30 @@
                             <td>
                                 {% for faixa in faixas %}
                                     {% if faixa.edital.pk == edital.pk %}
-                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                         <!--Imprimindo o nome da faixa correspondente ao edital-->
+                                        {{faixa.nome}} -
+                                            <!--Imprimindo o valor formatado da faixa correspondente ao edital(Pegar pelo id da faixa)-->
+                                            {% for k, v in faixaValorFormatado.items %}
+                                                {% if k == faixa.pk %}
+                                                    {{ v }} <br/>
+                                                {% endif %}
+                                            {% endfor %}
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td>R$ {{edital.recurso}}</td>
+                            <td>
+                                {% for k, v in editalRecursoFormatado.items %}
+                                    {% if k == edital.pk %}
+                                        {{ v }}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}
                 <tr class="active">
                     <td>Total</td>
-                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                    <td align="right" colspan="2">{{totalRecursos}}</td>
                 </tr>
             </table>
             {% endif %}
@@ -250,17 +304,30 @@
                             <td>
                                 {% for faixa in faixas %}
                                     {% if faixa.edital.pk == edital.pk %}
-                                        {{faixa.nome}} - R$ {{faixa.valor}}<br/>
+                                         <!--Imprimindo o nome da faixa correspondente ao edital-->
+                                        {{faixa.nome}} -
+                                            <!--Imprimindo o valor formatado da faixa correspondente ao edital(Pegar pelo id da faixa)-->
+                                            {% for k, v in faixaValorFormatado.items %}
+                                                {% if k == faixa.pk %}
+                                                    {{ v }} <br/>
+                                                {% endif %}
+                                            {% endfor %}
                                     {% endif %}
                                 {% endfor %}
                             </td>
-                            <td>R$ {{edital.recurso}}</td>
+                            <td>
+                                {% for k, v in editalRecursoFormatado.items %}
+                                    {% if k == edital.pk %}
+                                        {{ v }}
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
                         {% endif %}
                     </tr>
                 {% endfor %}
                 <tr class="active">
                     <td>Total</td>
-                    <td align="right" colspan="2">R$ {{totalRecursos}}</td>
+                    <td align="right" colspan="2">{{totalRecursos}}</td>
                 </tr>
             </table>
             {% endif %}

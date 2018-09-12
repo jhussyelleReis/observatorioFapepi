@@ -6,6 +6,7 @@ import folium
 import os
 import pandas as pd
 import sys
+import locale
 
 from html.parser import HTMLParser
 
@@ -393,8 +394,13 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
     totalRecursos = 0
     totalQuantidade = 0
     somaQuantidades = {}
+    editalRecursoFormatado = {}
+    faixaValorFormatado = {}
 
     faixas = Faixa.objects.all()
+
+    #para formatar os valores finaceiros na moeda brasileira
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
     editais = Edital.objects.all()
     for edital in editais:
@@ -410,39 +416,61 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
                         soma += faixa.quantidade
                         totalQuantidade += faixa.quantidade
                 somaQuantidades[edital.pk] = soma
-                print(somaQuantidades)
         else:
             totalRecursos = 0
             if tipo == 'participacao':
                 editais = Edital.objects.filter(tipo='participacao')
                 for edital in editais:
                     totalRecursos += edital.recurso
+                    editalRecursoFormatado[edital.pk] = locale.currency(edital.recurso, grouping=True)
+                    for faixa in faixas:
+                        if faixa.edital.pk == edital.pk:
+                            faixaValorFormatado[faixa.pk] = locale.currency(faixa.valor, grouping=True)
             else:
                totalRecursos = 0
                if tipo == 'organizacao':
                     editais = Edital.objects.filter(tipo='organizacao')
                     for edital in editais:
                         totalRecursos += edital.recurso
+                        editalRecursoFormatado[edital.pk] = locale.currency(edital.recurso, grouping=True)
+                        for faixa in faixas:
+                            if faixa.edital.pk == edital.pk:
+                                faixaValorFormatado[faixa.pk] = locale.currency(faixa.valor, grouping=True)
                else:
                    totalRecursos = 0
                    if tipo == 'projeto':
                        editais = Edital.objects.filter(tipo='projeto')
                        for edital in editais:
                            totalRecursos += edital.recurso
+                           editalRecursoFormatado[edital.pk] = locale.currency(edital.recurso, grouping=True)
+                           for faixa in faixas:
+                               if faixa.edital.pk == edital.pk:
+                                   faixaValorFormatado[faixa.pk] = locale.currency(faixa.valor, grouping=True)
                    else:
                        totalRecursos = 0
                        if tipo == 'publicacao':
                            editais = Edital.objects.filter(tipo='publicacao')
                            for edital in editais:
                                totalRecursos += edital.recurso
+                               editalRecursoFormatado[edital.pk] = locale.currency(edital.recurso, grouping=True)
+                               for faixa in faixas:
+                                   if faixa.edital.pk == edital.pk:
+                                       faixaValorFormatado[faixa.pk] = locale.currency(faixa.valor, grouping=True)
     else:
         totalRecursos = 0
         editais = Edital.objects.all()
         for edital in editais:
             totalRecursos += edital.recurso
+            editalRecursoFormatado[edital.pk] = locale.currency(edital.recurso, grouping=True)
+            for faixa in faixas:
+                if faixa.edital.pk == edital.pk:
+                    faixaValorFormatado[faixa.pk] = locale.currency(faixa.valor, grouping=True)
+
+    totalRecursos = locale.currency(totalRecursos, grouping=True)
 
     return render(request, template_name, {'editais': editais, 'faixas': faixas, 'totalRecursos': totalRecursos,
-                                           'totalQuantidade': totalQuantidade, 'somaQuantidades':somaQuantidades})
+                                           'totalQuantidade': totalQuantidade, 'somaQuantidades':somaQuantidades,
+                                           'editalRecursoFormatado':editalRecursoFormatado, 'faixaValorFormatado':faixaValorFormatado })
 
 def sobre(request, template_name="sobre.html"):
     return render(request, template_name)
@@ -453,14 +481,18 @@ def observatorio_default(request, template_name="observatorio_default.html"):
 
     bolsas = Bolsa.objects.all()
 
-    eventosBanco = Evento.objects.all()
+   # eventosBanco = Evento.objects.all()
 
-    eventosTratamento = pd.DataFrame.from_records(
-        eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
+   # eventosTratamento = pd.DataFrame.from_records(
+      #  eventosBanco.values('titulo', 'tipo', 'area', 'pais', 'estado', 'data', 'pesquisador'))
 
-    eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
+   # eventosOrganizacao = eventosTratamento[eventosTratamento.tipo == 'organizacao']
 
-    eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+   # eventosParticipacao = eventosTratamento[eventosTratamento.tipo == 'participacao']
+
+    eventosOrganizacao = Evento.objects.filter(tipo='organizacao')
+
+    eventosParticipacao = Evento.objects.filter(tipo='participacao')
 
     projetos = Projeto.objects.all()
 
