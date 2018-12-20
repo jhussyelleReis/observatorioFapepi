@@ -10,24 +10,22 @@ Observatório FAPEPI
 
     <form method="get">
         <div class="col-md-12">
+            <div>
+                <select class="form-control" name="vigentes" value="Vigentes">
+                    <option value="Vigente">Vigentes</option>
+                    <option value="Todos">Todos</option>
+                </select>
+            </div>
+
+             <br/>
+
             <div class="input-group">
                 <input type="text" class="form-control" name="busca" placeholder="Buscar Pesquisador">
-                <!--div>
-                        <select class="form-control" name="instituicao">
-                            {% block instituicoes %} {% endblock %}
-                        </select>
-                    </div>
-                    <br/>
-                    <div>
-                        <select class="form-control" name="programa">
-                            {% block programa %} {% endblock %}
-                        </select>
-                    </div>
-                    <br/-->
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Pesquisar</button>
                 </span>
             </div>
+
         </div>
     </form>
 
@@ -52,6 +50,7 @@ Observatório FAPEPI
             <p>Instituição: {{ bolsa.instituicao.nome }} </p>
             <p>Localização: {{ bolsa.estado }} </p>
             <p>Programa: {{ bolsa.programa.nome }} </p>
+            <p>Edital: {{ bolsa.edital.titulo }}	</p>
             <p>Vigencia: {{ bolsa.vigencia }} </p>
         </h6>
         <hr/>
@@ -62,7 +61,7 @@ Observatório FAPEPI
 
 {% block contentDireita %}
 
-    <object width="100%" height="100%" type="text/html" data="http://127.0.0.1:8000/bolsa/mapa/bolsas/">
+    <object width="100%" height="100%" type="text/html" data="http://127.0.0.1:8080/bolsa/mapa/bolsas/">
 
     </object>
 

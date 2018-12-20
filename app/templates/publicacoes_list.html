@@ -28,6 +28,10 @@ Observatório FAPEPI
                     <button class="btn btn-default" type="submit">Pesquisar</button>
                 </span>
             </div>
+            <br/>
+            <div>
+
+            </div>
         </div>
     </form>
 
@@ -54,6 +58,7 @@ Observatório FAPEPI
             <p>Modalidade: {{ publicacao.modalidade }} </p>
             <p>Área: {{ publicacao.area }} </p>
             <p>Instituição: {{ publicacao.instituicao.nome }} </p>
+            <p>Edital: {{ publicacao.edital.titulo }}	</p>
         </h6>
         <hr/>
 
@@ -64,7 +69,7 @@ Observatório FAPEPI
 
 {% block contentDireita %}
 
-    <object width="100%" height="100%" type="text/html" data="http://127.0.0.1:8000/publicacao/mapa/publicacoes/">
+    <object width="100%" height="100%" type="text/html" data="http://127.0.0.1:8080/publicacao/mapa/publicacoes/">
 
     </object>
 

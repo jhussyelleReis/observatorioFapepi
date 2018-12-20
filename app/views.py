@@ -40,7 +40,7 @@ def mapa_bolsas(request, template_name="mapa_bolsas.html"):
         if((dados[dados.LATITUDE == la]) is not None ):
             totalDeBolsas = pd.value_counts(dados['LATITUDE'])
 
-        folium.Marker(location=[la, lo], popup=(folium.Popup(es + '</br> Total de Bolsas: '+ str(totalDeBolsas[la]) + '</br><a href="http://127.0.0.1:8000/bolsa/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
+        folium.Marker(location=[la, lo], popup=(folium.Popup(es + '</br> Total de Bolsas: '+ str(totalDeBolsas[la]) + '</br><a href="http://127.0.0.1:8080/bolsa/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_bolsas.html"))
 
@@ -116,7 +116,7 @@ def mapa_participacao_eventos(request, template_name="mapa_participacao_eventos.
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeEventos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Eventos: '+ str(totalDeEventos[la]) + '</br><a href="http://127.0.0.1:8000/evento/participacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
+                      popup=(folium.Popup(es + '</br> Total de Eventos: '+ str(totalDeEventos[la]) + '</br><a href="http://127.0.0.1:8080/evento/participacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
         #folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
 
     mapa.save(os.path.join('app/templates',"mapa_participacao_eventos.html"))
@@ -190,7 +190,7 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeEventos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Eventos: '+ str(totalDeEventos[la]) + '</br><a href="http://127.0.0.1:8000/evento/organizacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
+                      popup=(folium.Popup(es + '</br> Total de Eventos: '+ str(totalDeEventos[la]) + '</br><a href="http://127.0.0.1:8080/evento/organizacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(mapa)
         #folium.Marker(location=[la, lo], popup='Localização do Evento').add_to(mapa)
 
     mapa.save(os.path.join('app/templates', "mapa_organizacao_eventos.html"))
@@ -261,7 +261,7 @@ def mapa_projetos(request, template_name="mapa_projetos.html"):
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDeProjetos = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Projetos: '+ str(totalDeProjetos[la]) + '</br><a href="http://127.0.0.1:8000/projeto/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(
+                      popup=(folium.Popup(es + '</br> Total de Projetos: '+ str(totalDeProjetos[la]) + '</br><a href="http://127.0.0.1:8080/projeto/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(
             mapa)
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
@@ -341,7 +341,7 @@ def mapa_publicoes(request, template_name="mapa_publicacoes.html"):
         if ((dados[dados.LATITUDE == la]) is not None):
             totalDePublicacoes = pd.value_counts(dados['LATITUDE'])
         folium.Marker(location=[la, lo],
-                      popup=(folium.Popup(es + '</br> Total de Publicações: '+ str(totalDePublicacoes[la]) + '</br><a href="http://127.0.0.1:8000/publicacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(
+                      popup=(folium.Popup(es + '</br> Total de Publicações: '+ str(totalDePublicacoes[la]) + '</br><a href="http://127.0.0.1:8080/publicacao/listarrestri/'+es+'" target="_blank"> Pesquisadores </a>'))).add_to(
             mapa)
         #folium.Marker(location=[la, lo], popup='Total de Projetos: ').add_to(mapa)
 
@@ -402,7 +402,7 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
     #para formatar os valores finaceiros na moeda brasileira
     locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
-    editais = Edital.objects.all()
+    editais = Edital.objects.order_by('ano')
     for edital in editais:
         totalRecursos += edital.recurso
 
@@ -461,6 +461,7 @@ def recursos(request, tipo, template_name="recursosdefault.html"):
         editais = Edital.objects.all()
         for edital in editais:
             totalRecursos += edital.recurso
+            totalQuantidade += 1
             editalRecursoFormatado[edital.pk] = locale.currency(edital.recurso, grouping=True)
             for faixa in faixas:
                 if faixa.edital.pk == edital.pk:

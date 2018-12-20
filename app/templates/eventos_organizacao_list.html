@@ -53,6 +53,7 @@ Observatório FAPEPI
             <p>Local: {{ evento.estado }} </p>
             <p>Área: {{ evento.area }} </p>
             <p>Data: {{ evento.data }} </p>
+            <p>Edital: {{ evento.edital.titulo }}	</p>
         </h6>
         <hr/>
 
@@ -62,7 +63,7 @@ Observatório FAPEPI
 
 {% block contentDireita %}
 
-    <object width="100%" height="100%" type="text/html" data="http://127.0.0.1:8000/evento/mapa/eventos/organizacao/">
+    <object width="100%" height="100%" type="text/html" data="http://127.0.0.1:8080/evento/mapa/eventos/organizacao/">
 
     </object>
 
