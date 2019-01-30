@@ -178,13 +178,13 @@ def mapa_organizacao_eventos(request, template_name="mapa_organizacao_eventos.ht
 
     dados = municipios.merge(municipiosBanco, left_on='Mun/UF', right_on='estado', how='inner')
 
-    mapa = folium.Map(location=[-15.788497, -47.879873], zoom_start=4)
+    mapa = folium.Map(location=[-6.8041034, -47.6824631], zoom_start=6)
 
-    lat = dados['LATITUDE'][:1000].values
+    lat = dados['LATITUDE'][:2000].values
 
-    long = dados['LONGITUDE'][:1000].values
+    long = dados['LONGITUDE'][:2000].values
 
-    estados = dados['estado'][:1000].values
+    estados = dados['estado'][:2000].values
 
     for la, lo, es in zip(lat, long, estados):
         if ((dados[dados.LATITUDE == la]) is not None):

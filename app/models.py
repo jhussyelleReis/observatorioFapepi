@@ -262,19 +262,95 @@ class Publicacao(models.Model):
 
 class Evento(models.Model):
 
+  #  ESTADO_CHOICES = (
+  #  ("RIOBRANCO-AC", "Acre"), ("MACEIO-AL", "Alagoas"), ("MACAPA-AP", "Amapá"), ("MANAUS-AM", "Amazonas"),
+  #  ("SALVADOR-BA", "Bahia"), ("FORTALEZA-CE", "Ceará"), ("BRASILIA-DF", "Distrito Federal"),
+  #  ("VITORIA-ES", "Espírito Santo"),
+  #  ("GOIANIA-GO", "Goiás"), ("SAOLUIS-MA", "Maranhão"), ("BELOHORIZONTE-MG", "Minas Gerais"),
+  #  ("CAMPOGRANDE-MS", "Mato Grosso do Sul"),
+  #  ("CUIABA-MT", "Mato Grosso"), ("BELEM-PA", "Pará"), ("JOAOPESSOA-PB", "Paraíba"),
+  #  ("RECIFE-PE", "Pernambuco"), ("TERESINA-PI", "Piauí"),
+  #  ("CURITIBA-PR", "Paraná"), ("RIODEJANEIRO-RJ", "Rio de Janeiro"), ("NATAL-RN", "Rio Grande do Norte"),
+  #  ("PORTOVELHO-RO", "Rondônia"),
+  #  ("BOAVISTA-RR", "Roraima"), ("PORTOALEGRE-RS", "Rio Grande do Sul"), ("FLORIANOPOLIS-SC", "Santa Catarina"),
+  #  ("ARACAJU-SE", "Sergipe"),
+  #  ("SAOPAULO-SP", "São Paulo"), ("PALMAS-TO", "Tocantins"))
+
+
     ESTADO_CHOICES = (
-    ("RIOBRANCO-AC", "Acre"), ("MACEIO-AL", "Alagoas"), ("MACAPA-AP", "Amapá"), ("MANAUS-AM", "Amazonas"),
-    ("SALVADOR-BA", "Bahia"), ("FORTALEZA-CE", "Ceará"), ("BRASILIA-DF", "Distrito Federal"),
-    ("VITORIA-ES", "Espírito Santo"),
-    ("GOIANIA-GO", "Goiás"), ("SAOLUIS-MA", "Maranhão"), ("BELOHORIZONTE-MG", "Minas Gerais"),
-    ("CAMPOGRANDE-MS", "Mato Grosso do Sul"),
-    ("CUIABA-MT", "Mato Grosso"), ("BELEM-PA", "Pará"), ("JOAOPESSOA-PB", "Paraíba"),
-    ("RECIFE-PE", "Pernambuco"), ("TERESINA-PI", "Piauí"),
-    ("CURITIBA-PR", "Paraná"), ("RIODEJANEIRO-RJ", "Rio de Janeiro"), ("NATAL-RN", "Rio Grande do Norte"),
-    ("PORTOVELHO-RO", "Rondônia"),
-    ("BOAVISTA-RR", "Roraima"), ("PORTOALEGRE-RS", "Rio Grande do Sul"), ("FLORIANOPOLIS-SC", "Santa Catarina"),
-    ("ARACAJU-SE", "Sergipe"),
-    ("SAOPAULO-SP", "São Paulo"), ("PALMAS-TO", "Tocantins"))
+      ("ACAUA-PI", "Acauã"),("AGRICOLANDIA-PI", "Agricolandia"),("AGUABRANCA-PI", "Água Branca"),
+      ("ALAGOINHADOPIAUI-PI", "Alagoinha do Piauí"), ("ALEGRETEDOPIAUI-PI", "Alegrete do Piauí"), ("ALTOLONGA-PI", "Alto Longá"),
+      ("ALTOS-PI", "Altos"), ("ALVORADADOGURGUEIA-PI", "Alvorada do Gurguéia"), ("AMARANTE-PI", "Amarante"),
+      ("ANGICALDOPIAUI-PI", "Angical do Piauí"), ("ANISIODEABREU-PI", "Anisio de Abreu"), ("ANTONIOALMEIDA-PI", "Antônio Almeida"),
+      ("AROAZES-PI", "Aroazes"), ("ARRAIAL-PI", "Arraial"), ("ASSUNCAODOPIAUI-PI", "Assunção do Piauí"),
+      ("AVELINOLOPES-PI", "Avelino Lopes"), ("BAIXAGRANDEDORIBEIRO-PI", "Baixa Grande do Ribeiro"), ("BARRAD'ALCANTARA-PI", "Barra D'Alcantara"),
+      ("BARRAS-PI", "Barras"), ("BARREIRAS DO PIAUI - PI", "Barreiras do Piauí"), ("BARRODURO-PI", "Barro Duro"),
+      ("BATALHA-PI", "Batalha"), ("BELAVISTADOPIAUI-PI", "Bela Vista do Piauí"), ("BELEMDOPIAUI-PI", "Belém do Piauí"),
+      ("BENEDITINOS-PI", "Beneditinos"), ("BERTOLINIA-PI", "Bertolinia"), ("BETANIADOPIAUI-PI","Betânia do Piauí"),
+      ("BOAHORA-PI", "Boa Hora"), ("BOCAINA-PI", "Bocaína"), ("BOMJESUS-PI", "Bom Jesus"),
+      ("BOMPRINCIPIODOPIAUI-PI", "Bom Princípio do Piauí"), ("BONFIMDOPIAUI-PI", "Bonfim do Piauí"), ("BOQUEIRAODOPIAUI-PI", "Boqueirão do Piauí"),
+      ("BRASILEIRA-PI", "Brasileira"), ("BREJODOPIAUI-PI", "Brejo do Piauí"), ("BURITIDOSLOPES-PI", "Buriti dos Lopes"),
+      ("BURITIDOSMONTES-PI", "Buriti dos Montes"), ("CABECEIRASDOPIAUI-PI", "Cabeceiras do Piauí"), ("CAJAZEIRASDOPIAUI-PI", "Cajazeoras do Piauí"),
+      ("CAJUEIRODAPRAIA-PI", "Cajueiro da Praia"), ("CALDEIRAOGRANDEDOPIAUI-PI", "Caldeirão Grande do Piauí"), ("CAMPINASDOPIAUI-PI", "Campinas do Piauí"),
+      ("CAMPOALEGREDOFIDALGO-PI", "Campo Alegre do Fidalgo"), ("CAMPOGRANDEDOPIAUI-PI", "Campo Grande do Piauí"), ("CAMPOLARGODOPIAUI-PI", "Campo Largo do Piauí"),
+      ("CAMPOMAIOR-PI", "Campo Maior"), ("CANAVIEIRA-PI", "Canavieira"), ("CANTODOBURITI-PI", "Canto do Buriti"),
+      ("CAPITAODECAMPOS-PI", "Capitão de Campos"), ("CAPITAOGERVASIOOLIVEIRA-PI", "Capitão Gervásio Oliveira"), ("CARACOL-PI", "Caracol"),
+      ("CARAUBASDOPIAUI-PI", "Caraubas do Piauí"), ("CARIDADEDOPIAUI-PI", "Caridade do Piauí"), ("CASTELODOPIAUI-PI","Castelo do Piauí"),
+      ("CAXINGO-PI", "Caxingó"), ("COCAL-PI", "Cocal"), ("COCALDETELHA-PI", "Cocal de Telha"), ("COCALDOSALVES-PI", "Cocal dos Alves"),
+      ("COIVARAS-PI", "Coivaras"), ("COLONIADOGURGUEIA-PI", "Colônia do Gurguéia"), ("COLONIADOPIAUI-PI", "Colônia do Piauí"),
+      ("CONCEICAODOCANINDE-PI", "Conceição do Canidé"), ("CORONELJOSEDIAS-PI", "Coronel José Dias"), ("CORRENTE - PI", "Corrente"),
+      ("CRISTALANDIADOPIAUI-PI", "Cristalandia do Piauí"), ("CRISTINOCASTRO-PI", "Cristino Castro"), ("CURIMATA-PI", "Curimata"),
+      ("CURRAIS-PI", "Currais"), ("CURRALNOVODOPIAUI-PI", "Curral Novo do Piauí"), ("CURRALINHOS-PI", "Curralinhos"),
+      ("DEMERVALLOBAO-PI", "Demerval Lobão"), ("DIRCEUARCOVERDE-PI", "Dirceu Arcoverde"), ("DOMEXPEDITOLOPES-PI", "Dom Expedito Lopes"),
+      ("DOMINOCENCIO-PI", "Domino Cencio"), ("DOMINGOS MOURAO-PI", "Domingos Mourão"), ("ELESBAOVELOSO-PI", "Elesbão Veloso"),
+      ("ELISEUMARTINS-PI", "Eliseu Martins"), ("ESPERANTINA-PI", "Esperantina"), ("FARTURADOPIAUI-PI", "Fartura do Piauí"),
+      ("FLORESDOPIAUI-PI", "Flores do Piauí"), ("FLORESTADOPIAUI-PI", "Floresta do Piauí"), ("FLORIANO-PI", "Floriano"),
+      ("FRANCINOPOLIS-PI", "Francinopolis"), ("FRANCISCOAYRES-PI", "Francisco Ayres"), ("FRANCISCOMACEDO-PI", "Francisco Macedo"),
+      ("FRANCISCOSANTOS-PI", "Francisco Santos"), ("FRONTEIRAS-PI","Fronteiras"), ("GEMINIANO-PI", "Germiniano"),
+      ("GILBUES-PI", "Gilbues"), ("GUADALUPE-PI", "Guadalupe"), ("GUARIBAS-PI", "Guaribas"),
+      ("HUGONAPOLEAO-PI", "Hugo Napoleão"), ("ILHAGRANDE-PI", "Ilha Grande"),("INHUMA-PI", "Inhuma"),
+      ("IPIRANGADOPIAUI-PI", "Ipiranga do Piauí"), ("ISAIASCOELHO-PI", "Isaías Coelho"), ("ITAINOPOLIS-PI", "Itainopolis"),
+      ("ITAUEIRA-PI", "Itaueira"), ("JACOBINADOPIAUI-PI", "Jacobina do Piauí"), ("JAICOS-PI", "Jaicós"),
+      ("JARDIMDOMULATO-PI", "Jardim do Mulato"), ("JATOBADOPIAUI-PI", "Jatoba do Piauí"), ("JERUMENHA-PI", "Jerumenha"),
+      ("JOAOCOSTA-PI", "João Costa"), ("JOAQUIMPIRES- PI", "Joaquim Pires"), ("JOCAMARQUES-PI", "Joca Marques"),
+      ("JOSEDEFREITAS-PI", "José de Freitas"), ("JUAZEIRODOPIAUI-PI", "Juazeiro do Piauí"), ("JULIOBORGES-PI", "Julio Borges"),
+      ("JUREMA-PI", "Jurema"), ("LAGOAALEGRE-PI", "Lagoa Alegre"), ("LAGOADESAOFRANCISCO-PI", "Lagoa de São Francisco"),
+      ("LAGOADOBARRODOPIAUI-PI", "Lagoa do Barro do Piauí"), ("LAGOADOPIAUI-PI", "Lagoa do Piauí"), ("LAGOADOSITIO-PI", "Lagoa do Sítio"),
+      ("LAGOINHADOPIAUI-PI", "Lagoinha do Piauí"), ("LANDRISALES-PI", "Landri Sales"), ("LUISCORREIA-PI", "Luis Correia"),
+      ("LUZILANDIA-PI", "Luzilandia"), ("MADEIRO-PI", "Madeiro"), ("MANOELEMIDIO-PI", "Manoel Emídio"),
+      ("MARCOLANDIA-PI", "Marcolandia"), ("MARCOSPARENTE-PI", "Marcos Parente"), ("MASSAPEDOPIAUI-PI", "Massapê do Piauí"),
+      ("MATIASOLIMPIO-PI", "Matias Olimpio"), ("MIGUELALVES-PI", "Miguel Alves"), ("MIGUELLEAO-PI", "Miguel Leão"),
+      ("MILTONBRANDAO-PI", "Milton Brandão"), ("MONSENHORGIL-PI", "Monsenhor Gil"), ("MONSENHORHIPOLITO-PI", "Monsenhor Hipólito"),
+      ("MONTEALEGREDOPIAUI-PI", "Monte Alegre do Piauí"), ("MORROCABECANOTEMPO-PI", "Morro Cabeça no Tempo"), ("MORRODOCHAPEUDOPIAUI-PI", "Morro do Chapeu do Piauí"),
+      ("MURICIDOSPORTELAS-PI", "Murici dos Portelas"), ("NAZAREDOPIAUI-PI", "Nazaré do Piauí"), ("NOSSASENHORADENAZARE-PI", "Nossa Senhora de Nazaré"),
+      ("NOSSASENHORADOSREMEDIOS-PI", "Nossa Senhora dos Remédios"), ("NOVOORIENTEDOPIAUI-PI", "Novo Oriente do Piauí"), ("NOVOSANTOANTONIO-PI", "Novo Antônio"),
+      ("OEIRAS-PI", "Oeiras"), ("OLHOD'AGUADOPIAUI-PI", "Olho D'Agua do Piauí"), ("PAESLANDIM-PI", "Pães Landim"),
+      ("PAJEUDOPIAUI-PI", "Pajeu do Piauí"), ("PALMEIRADOPIAUI-PI", "Palmeira do Piauí"), ("PALMEIRAIS-PI", "Palmeirais"),
+      ("PAQUETA-PI", "Paquetá"), ("PARNAGUA-PI", "Parnaguá"), ("PARNAIBA-PI", "Parnaíba"),
+      ("PASSAGEMFRANCADOPIAUI-PI", "Passagem Franca do Piauí"), ("PATOSDOPIAUI-PI", "Patos do Piauí"), ("PAULISTANA-PI", "Paulistana"),
+      ("PAVUSSU-PI", "Pavussu"), ("PEDROII-PI", "Pedro II"), ("PEDROLAURENTINO-PI", "Pedro Laurentino"),
+      ("PETRONIOPORTELA-PI", "Petronio Portela"), ("PICOS-PI", "Picos"), ("PIMENTEIRAS-PI", "Pimenteiras"),
+      ("PIOIX-PI", "Pio IX"), ("PIRACURUCA-PI", "Piracuruca"), ("PIRIPIRI-PI", "Piripiri"),
+      ("PORTO-PI", "Porto"), ("PORTOALEGREDOPIAUI-PI", "Porto Alegre do Piauí"), ("PRATADOPIAUI-PI", "Prata do Piauí"),
+      ("QUEIMADANOVA-PI", "Queimada Nova"), ("REDENCAODOGURGUEIA-PI", "Redenção do Gurguéia"), ("REGENERACAO-PI", "Regeneração"),
+      ("RIACHOFRIO-PI", "Riacho Frio"), ("RIBEIRADOPIAUI-PI", "Ribeira do Piauí"), ("RIBEIROGONCALVES-PI", "Ribeiro Gonçalves"),
+      ("RIOGRANDEDOPIAUI-PI", "Rio Grande do Piauí"), ("SANTACRUZDOPIAUI-PI", "Santa Cruz do Piauí"), ("SANTACRUZDOSMILAGRES-PI", "Santa Cruz dos Milagres"),
+      ("SANTAFILOMENA-PI", "Santa Filomena"), ("SANTALUZ-PI", "Santa Luz"), ("SANTAROSADOPIAUI-PI", "Santa Rosa do Piauí"),
+      ("SANTANADOPIAUI-PI", "Santana do Piauí"), ("SANTOANTONIODELISBOA-PI", "Santo Antônio de Lisboa"), ("SANTOANTONIODOSMILAGRES-PI", "Santo Antonio dos Milagres"),
+      ("SANTOINACIODOPIAUI-PI", "Santo Inácio do Piauí"), ("SAOBRAZDOPIAUI-PI", "São Braz do Piauí"), ("SAOFELIXDOPIAUI-PI", "São Feliz do Piauí"),
+      ("SAOFRANCISCODEASSISDOPIAUI-PI", "São Francisco de Assis do Piauí"), ("SAOFRANCISCODOPIAUI-PI", "São Francisco do Piauí"), ("SAOGONCALODOGURGUEIA-PI", "São Gonçalo do Gurguéia"),
+      ("SAOGONCALODOPIAUI-PI", "São Gonçalo do Piauí"), ("SAOJOAODACANABRAVA-PI", "São João da Canabrava"), ("SAOJOAODAFRONTEIRA-PI", "São João da Fronteira"),
+      ("SAOJOAODASERRA-PI", "São João da Serra"), ("SAOJOAODAVARJOTA-PI", "São João da Varjota"), ("SAOJOAODOARRAIAL-PI", "São João do Arraial"),
+      ("SAOJOAODOPIAUI-PI", "São João do Piauí"), ("SAOJOSEDODIVINO-PI", "São José do Divino"), ("SAOJOSEDOPEIXE-PI", "São José do Peixe"),
+      ("SAOJOSEDOPIAUI-PI", "São José do Piauí"), ("SAOJULIAO-PI", "São Julião"), ("SAOLOURENCODOPIAUI-PI", "São Lourenço do Piauí"),
+      ("SAOLUISDOPIAUI-PI", "São Luís do Piauí"), ("SAOMIGUELDABAIXAGRANDE-PI", "São Miguel da Baixa Grande"), ("SAOMIGUELDOFIDALGO-PI", "São Miguel do Figalgo"),
+      ("SAOMIGUELDOTAPUIO-PI", "São Miguel do Tapuio"), ("SAOPEDRODOPIAUI-PI", "São Pedro do Piauí"), ("SAORAIMUNDONONATO-PI", "São Raimundo Nonato"),
+      ("SEBASTIAOBARROS-PI", "Sebastião Barros"), ("SEBASTIAOLEAL-PI", "Sebastião Leal"), ("SIGEFREDOPACHECO-PI", "Sigefredo Pacheco"),
+      ("SIMOES-PI", "Simões"), ("SIMPLICIOMENDES-PI", "Simplicio Mendes"), ("SOCORRODOPIAUI-PI", "Socorro do Piauí"),
+      ("SUSSUAPARA-PI", "Sussuapara"), ("TAMBORILDOPIAUI-PI", "Tamboril do Piauí"), ("TANQUEDOPIAUI-PI", "Tanque do Piauí"),
+      ("TERESINA-PI", "Teresina"), ("UNIAO-PI", "União"), ("URUCUI-PI", "Uruçui"),
+      ("VALENCADOPIAUI-PI", "Valença do Piauí"), ("VARZEABRANCA-PI", "Varzea Branca"), ("VARZEAGRANDE-PI", "Varzea Grande"),
+      ("VERAMENDES-PI", "Vera Mendes"), ("VILANOVADOPIAUI-PI", "Vila Nova do Piauí"), ("WALLFERRAZ-PI", "Wall Ferraz"))
 
     TIPO_CHOICES = (("participacao", "Participação de Eventos"), ("organizacao", "Organização de Eventos"))
 
@@ -282,16 +358,16 @@ class Evento(models.Model):
     tipo = models.CharField(max_length=100, null=False, verbose_name="Tipo de Aplicação", choices=TIPO_CHOICES)
     area = models.CharField(max_length=200, null=False, verbose_name="Area do Conhecimento")
     pais = models.CharField(max_length=50, null=False, verbose_name="País", default="Brasil")
-    estado = models.CharField(max_length=50, null=False, verbose_name="Estado", choices=ESTADO_CHOICES)
+    estado = models.CharField(max_length=200, null=False, verbose_name="Estado", choices=ESTADO_CHOICES)
     data = models.DateField(null=False, verbose_name="Vigência")
     pesquisador = models.ForeignKey(Pesquisador, verbose_name="Pesquisador")
     edital = models.ForeignKey(Edital, verbose_name="Edital")
 
 
     def __str__(self):
-        return self.titulo
+      return self.titulo
 
     class Meta:
-        verbose_name_plural = "Eventos"
-        verbose_name = "Evento"
+      verbose_name_plural = "Eventos"
+      verbose_name = "Evento"
 
